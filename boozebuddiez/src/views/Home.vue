@@ -1,14 +1,16 @@
 <template>
   <div class="home">
-    <h1>Boozebuddies</h1>
-    <h2>The way to remember yesterday</h2>
+    <div class="textdiv">
+      <h1>Boozebuddies</h1>
+      <h2>The way to remember yesterday</h2>
+    </div>
     <img alt="booze logo" src="../assets/images/homelogo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" />
 
     <!-- Check that the SDK client is not currently loading before accessing is methods -->
     <div v-if="!$auth.loading">
       <!-- show login when not authenticated -->
-      <img class="loginbutton" src="../assets/images/googlelogin.png" @click="login">
+      <img class="loginbutton" src="../assets/images/googlelogin.png" @click="login" />
       <!-- show logout when authenticated -->
       <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
     </div>
@@ -20,9 +22,7 @@
 
 export default {
   name: "home",
-  components: {
-    
-  },
+  components: {},
   methods: {
     // Log the user in
     login() {
@@ -39,7 +39,13 @@ export default {
 </script>
 
 <style>
-  .loginbutton {
-      width: 17%;
-  }
+.loginbutton {
+  width: 17%;
+}
+
+.textdiv {
+  width: 40%;
+  margin: auto;
+  text-align: left;
+}
 </style>

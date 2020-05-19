@@ -1,4 +1,8 @@
 body {
     background: blanchedalmond;
     font-family: fantasy;
-  }
+}
+
+html {
+    height: 100%;
+}
