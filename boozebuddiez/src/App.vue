@@ -9,6 +9,7 @@
 
 <script>
 import Navigation from "./components/Navigation";
+import './assets/css/main.css';
 
 // import Friendlist from "./components/FriendList";
 
@@ -20,6 +21,8 @@ export default {
 </script>
 
 <style>
+
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
