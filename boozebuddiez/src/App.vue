@@ -35,6 +35,8 @@ export default {
 };
 </script>
 <style>
+@import 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css';
+
 h1 {
   font-size: 72px;
   color: black;

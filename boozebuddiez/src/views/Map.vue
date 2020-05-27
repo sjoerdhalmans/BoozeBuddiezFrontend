@@ -70,7 +70,6 @@ methods: {
      if (e.features) {
         const coordinates = e.features[0].geometry.coordinates.slice()
  
-       
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
@@ -79,7 +78,7 @@ methods: {
         }
  
         var popup = new mapboxgl.Popup()
-          .setLngLat({ lng: coordinates[0], lat: coordinates[1] })
+          .setLngLat({ lng: coordinates[0], lat: coordinates[1]})
           .setHTML('<div id="vue-popup-content"></div>')
           .addTo(map)
  
@@ -128,7 +127,7 @@ methods: {
 
 <style>
 #map {
-  width: 75%;
+  width: 100%;
   height: 500px;
   position: absolute; 
   top: 0; 
