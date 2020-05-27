@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from "../views/Profile.vue";
+import Map from "../views/Map.vue";
 import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter)
@@ -24,6 +25,12 @@ Vue.use(VueRouter)
     path: "/profile",
     name: "profile",
     component: Profile,
+    beforeEnter: authGuard
+  },
+  {
+    path: "/map",
+    name: "map",
+    component: Map,
     beforeEnter: authGuard
   }
 ]

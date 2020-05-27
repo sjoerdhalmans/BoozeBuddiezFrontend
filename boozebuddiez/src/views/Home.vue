@@ -5,7 +5,6 @@
       <h2>The way to remember yesterday</h2>
     </div>
     <img alt="booze logo" src="../assets/images/homelogo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
 
     <!-- Check that the SDK client is not currently loading before accessing is methods -->
     <div v-if="!$auth.loading">

@@ -9,11 +9,12 @@
 
 <script>
 import './assets/css/main.css';
+import Navigation from "@/components/Navigation.vue";
 export default {
   name: "App",
 
   components: {
-    
+    Navigation
   },
 
   data: () => ({
