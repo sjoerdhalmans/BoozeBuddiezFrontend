@@ -10,8 +10,6 @@
     <div v-if="!$auth.loading">
       <!-- show login when not authenticated -->
       <img class="loginbutton" src="../assets/images/googlelogin.png" @click="login" />
-      <!-- show logout when authenticated -->
-      <button v-if="$auth.isAuthenticated" @click="logout">Log out</button>
     </div>
   </div>
 </template>

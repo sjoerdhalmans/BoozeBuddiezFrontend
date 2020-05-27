@@ -7,7 +7,7 @@
     <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/map">Map</router-link>
     <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
     <router-link class="routerlink" to="/about">About</router-link>
-    <router-link class="routerlink" to="/">Home</router-link>
+    <!-- <router-link class="routerlink" to="/">Home</router-link> -->
   </div>
 </template>
 

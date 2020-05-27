@@ -1,20 +1,16 @@
 <template>
 <div id="app">
-  <div id="nav">
-    <Navigation />
-  </div>
   <router-view />
   </div>
 </template>
 
 <script>
 import './assets/css/main.css';
-import Navigation from "@/components/Navigation.vue";
 export default {
   name: "App",
 
   components: {
-    Navigation
+    
   },
 
   data: () => ({
