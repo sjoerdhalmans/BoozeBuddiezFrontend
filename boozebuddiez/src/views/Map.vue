@@ -16,12 +16,15 @@
       @map-click:points="clicked"
       @geolocate-error="geolocateError"
       @geolocate-geolocate="geolocate"
+      @map-mouseenter:points="mouseEntered"
+      @map-mouseleave:points="mouseLeft"
     />
   </div>
 </template>
 
 <script>
 import Mapbox from 'mapbox-gl-vue'
+import mapboxgl from 'mapbox-gl'
 import PopupContent from '@/components/map/PopupContent.vue'
 export default {
     name: "Map",
@@ -67,6 +70,7 @@ methods: {
      if (e.features) {
         const coordinates = e.features[0].geometry.coordinates.slice()
  
+       
         // Ensure that if the map is zoomed out such that multiple
         // copies of the feature are visible, the popup appears
         // over the copy being pointed to.
@@ -74,7 +78,7 @@ methods: {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360
         }
  
-        new map.Popup()
+        var popup = new mapboxgl.Popup()
           .setLngLat({ lng: coordinates[0], lat: coordinates[1] })
           .setHTML('<div id="vue-popup-content"></div>')
           .addTo(map)
@@ -83,6 +87,7 @@ methods: {
           propsData: { feature: e.features[0] },
         }).$mount('#vue-popup-content')
       }
+      popup._update();
     },
     geolocateError(control, positionError) {
       console.log(positionError)
@@ -93,6 +98,12 @@ methods: {
         `User position: ${position.coords.latitude}, ${position.coords.longitude}`
       )
      console.log('Map controlled' + this.control)
+    },
+        mouseEntered(map) {
+      map.getCanvas().style.cursor = 'pointer'
+    },
+    mouseLeft(map) {
+      map.getCanvas().style.cursor = ''
     },
     loadMarkers(){
         this.getBars.forEach(bar => {
@@ -117,7 +128,10 @@ methods: {
 
 <style>
 #map {
-  width: 100%;
+  width: 75%;
   height: 500px;
+  position: absolute; 
+  top: 0; 
+  bottom: 0;
 }
 </style>
