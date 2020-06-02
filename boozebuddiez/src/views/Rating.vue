@@ -30,22 +30,24 @@ import "../assets/css/main.css";
 import axios from 'axios';
 import Navigation from "@/components/Navigation.vue";
 export default {
-  mounted()
-  {
-    axios.get('217.101.44.31:8086/api/public/bar/getAllUserRatings/{userId}')
-    .then(response => (this.info = response))
-    console.log("yeet");
-  },
+  
   name: "App",
-
+  
   components: {
     Navigation
   },
 
-  data: () => ({
-    //
-  })
-  
+  data () {
+    return {
+      info: null
+    }
+  },
+  mounted()
+  {
+    axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/46')
+    .then(response => (this.info = response.data));
+    this.$store.dispatch('SaveRatingCollection', this.info);
+  },
 };
 </script>
 
