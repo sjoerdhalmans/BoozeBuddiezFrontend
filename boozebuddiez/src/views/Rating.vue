@@ -10,7 +10,7 @@
           <h3 class="col-6">My bar ratings</h3>
           <h3 class="col-6 addbutton" v-on:click="null">Add new rating</h3>
         </div>
-        <div class="itemlist"></div>
+        <div class="bar-rating-list"></div>
       </div>
       <div class="col-2"></div>
       <div class="col-4 content">
@@ -18,7 +18,7 @@
           <h3 class="col-6">My beer ratings</h3>
           <h3 class="col-6 addbutton" v-on:click="null">Add new rating</h3>
         </div>
-        <div class="itemlist"></div>
+        <div class="beer-rating-list"></div>
       </div>
       <div class="col-1"></div>
     </div>
@@ -56,11 +56,25 @@ export default {
   cursor: pointer;
 }
 
-.itemlist {
+.bar-rating-list {
   margin-top: 1%;
   height: 700px;
   border-color: black;
   border-style: solid;
   border-width: 1px;
+  background-image: url('../assets/images/barlogo.png');
+  opacity: 0.3;
+  background-position: center;
+}
+
+.beer-rating-list {
+  margin-top: 1%;
+  height: 700px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  background-image: url('../assets/images/boozebuddieslogo.png');
+  opacity: 0.3;
+  background-position: center;
 }
 </style>
