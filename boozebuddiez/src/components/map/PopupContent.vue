@@ -1,7 +1,13 @@
 <template>
   <div>
-    <h3>{{ feature.properties.title }}</h3>
-    <button @click="popupClicked">Learn more</button>
+    <div v-if="!showDetails">
+      <h3>{{ feature.properties.title }}</h3>
+      <button @click="Details">Learn more</button>
+    </div>
+     <div v-else>
+      <h3>{{ feature.properties.title }}</h3>
+      <button @click="Details">Show less</button>
+    </div>
   </div>
 </template>
  
@@ -13,10 +19,15 @@ export default Vue.extend({
       required: true,
       type: Object,
     },
+    data(){
+      return{
+        showDetails: false,
+      }
+    },
   },
   methods: {
-    popupClicked() {
-      alert('Learn more clicked')
+    Details() {
+      this.showDetails = !this.showDetails
     },
   },
 })
