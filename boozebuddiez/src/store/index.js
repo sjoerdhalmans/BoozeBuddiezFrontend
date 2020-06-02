@@ -6,6 +6,7 @@ import searchModule from "./searchModule";
 import mapModule from './mapModule'
 import userModule from "./userModule";
 import ratingModule from "./ratingModule";
+import timelineModule from './timelineModule';
 
 
 Vue.use(Vuex);
@@ -17,5 +18,6 @@ export default new Vuex.Store({
     mapModule: mapModule,
     userModule: userModule,
     ratingModule: ratingModule,
+    timelineModule: timelineModule,
   }
 });
