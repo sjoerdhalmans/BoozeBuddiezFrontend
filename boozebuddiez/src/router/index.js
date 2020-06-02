@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Profile from "../views/Profile.vue";
 import Map from "../views/Home2.0.vue";
+import Rating from "../views/Rating.vue";
 import { authGuard } from "../auth/authGuard";
 
 Vue.use(VueRouter)
@@ -31,6 +32,13 @@ Vue.use(VueRouter)
     path: "/map",
     name: "map",
     component: Map,
+    beforeEnter: authGuard
+  },
+  {
+    path: "/rating",
+    name: "rating",
+    component: Rating,
+    beforeEnter: authGuard
   }
 ]
 

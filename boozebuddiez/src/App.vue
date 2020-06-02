@@ -1,8 +1,5 @@
 <template>
 <div id="app">
-  <div id="nav">
-    <Navigation />
-  </div>
   <router-view />
   </div>
 </template>
@@ -16,7 +13,7 @@ export default {
   name: "App",
 
   components: {
-    Navigation
+    
   },
   mounted () {
     axios
