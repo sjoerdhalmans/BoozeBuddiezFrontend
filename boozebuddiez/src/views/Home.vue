@@ -38,6 +38,7 @@ export default {
 <style>
 .loginbutton {
   width: 17%;
+  cursor: pointer;
 }
 
 .textdiv {
