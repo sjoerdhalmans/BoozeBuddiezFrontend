@@ -27,8 +27,14 @@
 
 <script>
 import "../assets/css/main.css";
+import axios from axios;
 import Navigation from "@/components/Navigation.vue";
 export default {
+  mounted()
+  {
+    axios.get('')
+    console.log("yeet");
+  },
   name: "App",
 
   components: {
@@ -38,6 +44,7 @@ export default {
   data: () => ({
     //
   })
+  
 };
 </script>
 
