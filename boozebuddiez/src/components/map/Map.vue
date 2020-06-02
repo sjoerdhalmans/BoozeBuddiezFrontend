@@ -1,11 +1,12 @@
 <template>
-  <div>  
+  <div class="col-9">  
     <mapbox
+    ref="map"
     access-token="pk.eyJ1IjoibWFyaW8wMjYiLCJhIjoiY2thcDFvZ2ZtMDFnaTJ6cGFiajRwN3didyJ9.CYOzUb9FrBkpqg-NcFbJfA"
     :map-options="{
         style: 'mapbox://styles/mapbox/streets-v11',
-        center: [-96, 37.8],
-        zoom: 3,
+        center: [this.getMapFocus.lat, this.getMapFocus.long],
+        zoom: 10,
     }"
           :geolocate-control="{
         show: true,
@@ -37,6 +38,10 @@ export default {
         getBars() {
       return this.$store.getters.getBarCollection;
     },
+    getMapFocus(){
+      return this.$store.getters.getBarFocus;
+    },
+
 },
   components: { 
       Mapbox 
@@ -120,16 +125,17 @@ methods: {
         this.Markers.push(marker)
         });   
         console.log(this.Markers)
-    }
-  },
+    },
+},
 }
 </script>
 
 <style>
 #map {
   width: 100%;
-  height: 500px;
+  height: 800px;
   top: 0; 
   bottom: 0;
+  border-radius: 20px;
 }
 </style>

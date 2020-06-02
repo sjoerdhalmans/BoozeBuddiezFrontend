@@ -54,10 +54,6 @@ export default {
   word-wrap: break-word;
 }
 
-* {
-  color: grey;
-}
-
 .addbutton {
   text-decoration: underline;
   cursor: pointer;

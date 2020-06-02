@@ -1,5 +1,5 @@
 <template>
-    <div>BBBBBBBBBBBBBBBBBBBBBBBBBB</div>
+    <div>Ik ben de addbar pagina hoi</div>
 </template>
 
 <script>
