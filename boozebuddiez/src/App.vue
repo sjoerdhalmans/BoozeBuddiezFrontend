@@ -6,19 +6,34 @@
 
 <script>
 import './assets/css/main.css';
+import axios from 'axios';
+import Navigation from "@/components/Navigation.vue";
+
 export default {
   name: "App",
 
   components: {
     
   },
-
+  mounted () {
+    axios
+      .get('http://217.101.44.31:8084/api/public/bar/getAllBars')
+      .then(data => (
+        console.table(data.data.bars),
+        this.$store.dispatch("SaveBarCollection", data.data.bars)
+        ))
+  },
   data: () => ({
     //
   })
+
+
+
 };
 </script>
 <style>
+@import 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.css';
+
 h1 {
   font-size: 72px;
   color: black;

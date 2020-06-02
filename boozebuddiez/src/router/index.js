@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Profile from "../views/profile.vue";
-import Map from "../views/Map.vue";
+import Profile from "../views/Profile.vue";
+import Map from "../views/Home2.0.vue";
 import Rating from "../views/Rating.vue";
 import { authGuard } from "../auth/authGuard";
 
