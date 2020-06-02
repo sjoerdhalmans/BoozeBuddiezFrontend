@@ -33,6 +33,7 @@ export default {
   mounted()
   {
     axios.get('217.101.44.31:8086/api/public/bar/getAllUserRatings/{userId}')
+    .then(response => (this.info = response))
     console.log("yeet");
   },
   name: "App",
