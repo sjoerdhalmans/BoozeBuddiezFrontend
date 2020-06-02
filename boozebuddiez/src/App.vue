@@ -7,7 +7,6 @@
 <script>
 import './assets/css/main.css';
 import axios from 'axios';
-import Navigation from "@/components/Navigation.vue";
 
 export default {
   name: "App",
