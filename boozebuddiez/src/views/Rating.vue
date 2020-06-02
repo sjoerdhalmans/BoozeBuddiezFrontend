@@ -27,12 +27,12 @@
 
 <script>
 import "../assets/css/main.css";
-import axios from axios;
+import axios from 'axios';
 import Navigation from "@/components/Navigation.vue";
 export default {
   mounted()
   {
-    axios.get('')
+    axios.get('217.101.44.31:8086/api/public/bar/getAllUserRatings/{userId}')
     console.log("yeet");
   },
   name: "App",
