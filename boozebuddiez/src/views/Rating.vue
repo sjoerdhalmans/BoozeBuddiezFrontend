@@ -30,25 +30,28 @@ import "../assets/css/main.css";
 import axios from 'axios';
 import Navigation from "@/components/Navigation.vue";
 export default {
-  mounted()
-  {
-    axios.get('217.101.44.31:8086/api/public/bar/getAllUserRatings/{userId}')
-    console.log("yeet");
-    console.log(this.$auth.user);
-  },
+  
   name: "App",
 
   components: {
     Navigation
   },
 
-  data: () => ({
-    //
-  })
+ data () {
+    return {
+    }
+  },
   
+  mounted()
+  {
+    axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/46')
+    .then(response => (
+    console.table(response.data)));
+    // this.$store.dispatch('SaveRatingCollection', response.data)
+  },
 };
 </script>
-
+a
 <style>
 .content {
   margin-top: 2%;
