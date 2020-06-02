@@ -34,6 +34,7 @@ export default {
   {
     axios.get('217.101.44.31:8086/api/public/bar/getAllUserRatings/{userId}')
     console.log("yeet");
+    console.log(this.$auth.user);
   },
   name: "App",
 
