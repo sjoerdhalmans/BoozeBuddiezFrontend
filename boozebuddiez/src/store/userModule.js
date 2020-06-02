@@ -3,15 +3,22 @@ import Axios from "axios";
 export default {
     state: {
         user: null,
+        friends: [],
     },
     mutations: {
         SAVE_USER(state, user) {
             state.user = user;
         },
+        SAVE_FRIENDS(state, friends) {
+            state.friends = friends;
+        },
     },
     getters: {
         getUser: state => {
             return state.user;
+        },
+        getFriends: state => {
+            return state.friends;
         },
 
     },
@@ -24,6 +31,9 @@ export default {
 
         },
 
+        SaveFriends({ commit }, friends) {
+            commit("SAVE_FRIENDS", friends);
+        },
         async getUser(context, user) {
             await Axios
                 .get('http://217.101.44.31:8081/api/public/user/getUserByEmail/' + user.email)
