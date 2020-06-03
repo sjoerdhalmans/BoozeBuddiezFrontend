@@ -36,12 +36,24 @@
     <div class="row">
         <div class="col-12" @click="Reset"> RETURN </div>
     </div>
+        <star-rating
+     v-bind:increment="0.5"
+     v-bind:max-rating="5"
+     inactive-color="#000"
+     active-color="#cc1166"
+     v-bind:star-size="90"
+    >
+</star-rating>
 </div>
 </template>
 
 <script>
 import axios from 'axios'
+import StarRating from 'vue-star-rating'
 export default {
+      components: {
+    StarRating
+  },
     data(){
         return{
             bar:{
@@ -84,7 +96,7 @@ export default {
         },
         setdata(){
             try {
-                            this.bar.name = this.$store.getters.getNewBar[0].street
+            this.bar.name = this.$store.getters.getNewBar[0].street
             this.bar.address = this.$store.getters.getNewBar[0].street
             this.bar.zipcode = this.$store.getters.getNewBar[0].postalCode
             this.bar.location = this.$store.getters.getNewBar[0].latLng
