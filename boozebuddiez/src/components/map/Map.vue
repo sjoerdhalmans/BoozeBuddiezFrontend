@@ -15,6 +15,7 @@
       @map-load="loaded"
       @map-zoomend="zoomend"
       @map-click:points="clicked"
+      @map-click="createNew"
       @geolocate-error="geolocateError"
       @geolocate-geolocate="geolocate"
       @map-mouseenter:points="mouseEntered"
@@ -27,6 +28,7 @@
 import Mapbox from 'mapbox-gl-vue'
 import mapboxgl from 'mapbox-gl'
 import PopupContent from '@/components/map/PopupContent.vue'
+import axios from 'axios'
 export default {
     name: "Map",
     data(){
@@ -47,6 +49,18 @@ export default {
       Mapbox 
   },
 methods: {
+  createNew(map,e){
+  var lat = e.lngLat.lat
+  var lng = e.lngLat.lng
+  var url = "http://open.mapquestapi.com/geocoding/v1/reverse?key=7YGwtYpYPF2FbGl6R3Wkf2rWIbZPi2c2&location="+Number(lat)+","+Number(lng)+"&includeRoadMetadata=true&includeNearestIntersection=true"
+  console.log(url)
+  axios.get(url)
+        .then(response => (
+        console.table(response.data.results[0].locations),
+        this.$store.dispatch('SaveNewBar',response.data.results[0].locations),
+        this.$store.dispatch('SaveSearchResult', null)
+        ))
+  },
     loaded(map) {
         this.loadMarkers();
       map.addLayer({

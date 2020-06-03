@@ -1,12 +1,12 @@
 <template>
   <div>
-    <div v-if="this.searchResult === null">
+    <div v-if="this.searchResult === null && this.NewBar === null">
       <search/>
     </div>
     <div  v-else-if="this.searchResult !== null">
       <result/>
     </div>
-    <div  v-if="this.newBar">
+    <div  v-if="this.NewBar !== null">
       <addbar/>
     </div>
   </div>
@@ -26,11 +26,14 @@ export default {
     computed:{
       searchResult(){
         return this.$store.getters.getSearchResult;
+      },
+      NewBar(){
+        return this.$store.getters.getNewBar;
       }
     },
     data(){
       return{
-        newBar: false,
+        newBarData: false,
 
       }
     }
