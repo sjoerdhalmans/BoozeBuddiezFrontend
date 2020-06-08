@@ -1,15 +1,26 @@
 <template>
     <div class="row">
         <div class="col-5">  {{rating.barId}}</div>
-        <div class="col-5"> </div>
-        <div class="col-2"> {{rating.rating}}</div>
+        <div class="col-3"> </div>
+        <star-rating class="col-2"
+     v-bind:increment="0.5"
+     v-bind:max-rating="5"
+     inactive-color="#000"
+     active-color="#cc1166"
+     v-bind:star-size="20"
+     v-bind:rating="rating.rating"
+    >
+</star-rating>
     </div>
     
 </template>
 
 <script>
-
+import StarRating from 'vue-star-rating'
 export default {
+       components: {
+    StarRating
+  },
     props: ['rating']
 }
 </script>

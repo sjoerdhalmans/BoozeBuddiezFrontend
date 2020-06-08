@@ -29,11 +29,13 @@ import Mapbox from 'mapbox-gl-vue'
 import mapboxgl from 'mapbox-gl'
 import PopupContent from '@/components/map/PopupContent.vue'
 import axios from 'axios'
+let mapRef = null
 export default {
     name: "Map",
     data(){
         return{
             Markers: [],
+
         }
     },
     computed: {
@@ -41,6 +43,7 @@ export default {
       return this.$store.getters.getBarCollection;
     },
     getMapFocus(){
+      this.flyTo()
       return this.$store.getters.getBarFocus;
     },
 
@@ -62,6 +65,7 @@ methods: {
         ))
   },
     loaded(map) {
+        mapRef = map;
         this.loadMarkers();
       map.addLayer({
         id: 'points',
@@ -140,7 +144,17 @@ methods: {
         });   
         console.log(this.Markers)
     },
-},
+    flyTo(){
+      if(mapRef !== null){
+        mapRef.flyTo({
+        center: [
+            this.$store.getters.getBarFocus.lat,
+            this.$store.getters.getBarFocus.long],
+            zoom: 17,
+        });
+      }
+    }
+  },
 }
 </script>
 
