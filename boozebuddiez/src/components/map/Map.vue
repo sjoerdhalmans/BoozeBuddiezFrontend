@@ -35,7 +35,6 @@ export default {
     data(){
         return{
             Markers: [],
-
         }
     },
     computed: {
@@ -43,7 +42,7 @@ export default {
       return this.$store.getters.getBarCollection;
     },
     getMapFocus(){
-      this.flyTo()
+      this.flyToSearch()
       return this.$store.getters.getBarFocus;
     },
 
@@ -65,7 +64,7 @@ methods: {
         ))
   },
     loaded(map) {
-        mapRef = map;
+      mapRef = map
         this.loadMarkers();
       map.addLayer({
         id: 'points',
@@ -110,6 +109,7 @@ methods: {
         }).$mount('#vue-popup-content')
       }
       popup._update();
+      this.flyTo(e)
     },
     geolocateError(control, positionError) {
       console.log(positionError)
@@ -144,7 +144,7 @@ methods: {
         });   
         console.log(this.Markers)
     },
-    flyTo(){
+    flyToSearch(){
       if(mapRef !== null){
         mapRef.flyTo({
         center: [
@@ -153,8 +153,20 @@ methods: {
             zoom: 17,
         });
       }
+    },
+    flyTo(e){
+      console.table(e)
+      if(mapRef !== null){
+        mapRef.flyTo({
+        center: [
+            e.lngLat.lng,
+            e.lngLat.lat],
+            zoom: 13,
+        });
+      }
     }
-  },
+    
+},
 }
 </script>
 

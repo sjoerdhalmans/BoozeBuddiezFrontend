@@ -1,9 +1,14 @@
+*{
+    color: black !important;
+}
 
 body {
     background: blanchedalmond;
     font-family: fantasy;
+    color: black !important;
 }
 
 html {
     height: 100%;
+    color: black !important;
 }

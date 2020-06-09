@@ -60,7 +60,6 @@ export default {
     border-radius: 20px;
     box-shadow: 2px 2px;
     background-image: url('../../assets/images/boozebuddieslogo.png');
-    opacity: 0.3;
     background-position: center;
 }
 .button{

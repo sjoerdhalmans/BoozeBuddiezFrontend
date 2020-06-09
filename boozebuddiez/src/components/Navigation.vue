@@ -47,7 +47,6 @@ export default {
   top: 40%;
   margin-right: 10px;
   font-size: 20px;
-  color: grey !important;
   float: right;
 }
 .logo {

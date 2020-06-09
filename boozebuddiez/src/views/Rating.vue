@@ -89,22 +89,14 @@ a
 .bar-rating-list {
   margin-top: 1%;
   height: 700px;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
   background-image: url('../assets/images/barlogo.png');
-  opacity: 0.3;
   background-position: center;
 }
 
 .beer-rating-list {
   margin-top: 1%;
   height: 700px;
-  border-color: black;
-  border-style: solid;
-  border-width: 1px;
   background-image: url('../assets/images/boozebuddieslogo.png');
-  opacity: 0.3;
   background-position: center;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-5">  {{rating.barId}}</div>
+        <div class="col-5">  {{this.fullBar[0].name}}</div>
         <div class="col-3"> </div>
         <star-rating class="col-2"
      v-bind:increment="0.5"
@@ -18,6 +18,19 @@
 <script>
 import StarRating from 'vue-star-rating'
 export default {
+    data(){
+        return{
+            fullBar: null
+        }
+    },
+    mounted(){
+        this.getBarData()
+    },
+    methods:{
+        getBarData(){
+           this.fullBar = this.$store.getters.getBarCollection.filter(bar => bar.id == this.rating.barId)
+        },
+    },
        components: {
     StarRating
   },

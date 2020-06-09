@@ -4,7 +4,7 @@ export default {
           lat: 5.4,
           long: 51.4
       },
-      NewBar: null,
+      NewBar: null
     },
     mutations: {
       SAVE_BAR_FOCUS(state, bars) {

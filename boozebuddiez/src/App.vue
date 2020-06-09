@@ -19,6 +19,14 @@ export default {
         console.table(data.data.bars),
         this.$store.dispatch("SaveBarCollection", data.data.bars)
         ))
+
+            axios
+      .get('http://217.101.44.31:8083/api/public/beer/getAllBeers')
+      .then(data => (
+        console.table(data.data.bars),
+        console.log("BIEEEEEEEEER"),
+        this.$store.dispatch("SaveBeerCollection", data.data.beers)
+        ))
   },
   data: () => ({
     //
