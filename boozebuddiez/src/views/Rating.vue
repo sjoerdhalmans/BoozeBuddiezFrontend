@@ -8,7 +8,10 @@
       <div class="col-4 content">
         <div class="row">
           <h3 class="col-6">My bar ratings</h3>
-          <h3 class="col-6 addbutton" >Add new rating</h3>
+          <div class="col-2"></div>
+          <div data-app class ="col-3 addbutton">
+            <addnewbarrating></addnewbarrating>
+          </div>
         </div>
         <div class="bar-rating-list" >
           <div v-for="barrating in this.barrating.barRatings" :key="barrating.id"> 
@@ -20,7 +23,10 @@
       <div class="col-4 content">
         <div class="row">
           <h3 class="col-6">My beer ratings</h3>
-          <h3 class="col-6 addbutton" >Add new rating</h3>
+          <div class="col-2"></div>
+          <div data-app class ="col-3 addbutton">
+            <addnewbeerrating></addnewbeerrating>
+          </div>
         </div>
         <div class="beer-rating-list">
            <div v-for="beerrating in this.beerrating.beerRatings" :key="beerrating.id"> 
@@ -39,14 +45,18 @@ import axios from 'axios';
 import Navigation from "@/components/Navigation.vue";
 import barratingcard from '@/components/rating/barratingcard.vue';
 import beerratingcard from '@/components/rating/beerratingcard.vue';
+import addnewbeerrating from '@/components/rating/addnewbeerrating.vue';
+import addnewbarrating from '@/components/rating/addnewbarrating.vue';
 export default {
   
   name: "App",
-
+  
   components: {
     Navigation,
     barratingcard,
     beerratingcard,
+    addnewbeerrating,
+     addnewbarrating,
   },
   computed:
   {
