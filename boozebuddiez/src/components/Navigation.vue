@@ -1,12 +1,13 @@
 <template>
   <div class="toolbar">
     <img alt="booze logo" class="logo" src="../assets/images/boozebuddieslogo.png" />
-    <h2 class="logotext">BoozeBuddies</h2>
+    <h2 class="logotext" v-if="$auth.isAuthenticated" to="/map">BoozeBuddies</h2>
     <button class="routerlink logoutbutton" v-if="$auth.isAuthenticated" v-on:click="this.$auth.logout">Logout</button>
     <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/rating">Rating</router-link>
     <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/map">Map</router-link>
-    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
-    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/about">About</router-link>
+    <!-- <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
+    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/about">About</router-link> -->
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <!-- <router-link class="routerlink" to="/">Home</router-link> -->
   </div>
 </template>
@@ -26,7 +27,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;
+  height: auto;
   align-items: center;
   background-color: blanchedalmond;
   color: grey;
@@ -51,7 +52,7 @@ export default {
 }
 .logo {
   border-style: none;
-  height: 100%;
+  height: 80px;
   width: auto;
   float: left;
 }

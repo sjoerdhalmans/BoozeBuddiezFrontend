@@ -1,15 +1,21 @@
 <template>
-  <div class="home">
-    <div class="textdiv">
-      <h1>Boozebuddies</h1>
-      <h2>The way to remember yesterday</h2>
-    </div>
-    <img alt="booze logo" src="../assets/images/homelogo.png" />
+  <div class="container" style="width:100%">
+    <div class="home">
+      <div class="row">
+        <div class="col-sm">
+          <div class="textdiv">
+            <h1>Booze buddies</h1>
+            <h2>The way to remember yesterday</h2>
+          </div>
+        </div>
+      </div>
+      <img alt="booze logo" style="max-width:100%" src="../assets/images/homelogo.png" />
 
-    <!-- Check that the SDK client is not currently loading before accessing is methods -->
-    <div v-if="!$auth.loading">
-      <!-- show login when not authenticated -->
-      <img class="loginbutton" src="../assets/images/googlelogin.png" @click="login" />
+      <!-- Check that the SDK client is not currently loading before accessing is methods -->
+      <div v-if="!$auth.loading">
+        <!-- show login when not authenticated -->
+        <img class="loginbutton" src="../assets/images/googlelogin.png" @click="login" />
+      </div>
     </div>
   </div>
 </template>
@@ -41,8 +47,15 @@ export default {
   cursor: pointer;
 }
 
+@media only screen and (max-width: 800px) {
+  .loginbutton {
+    width: 100%;
+    cursor: pointer;
+  }
+}
+
 .textdiv {
-  width: 40%;
+  width: 55%;
   margin: auto;
   text-align: left;
 }
