@@ -88,8 +88,18 @@ import StarRating from 'vue-star-rating'
             userId: this.$store.getters.getUser.id,
 
             }).then(respone => {
-                console.log(respone.status);
-            })
+                if (respone.status == 200) {
+            var beer = {
+              userId: this.$store.getters.getUser.id,
+              beerId: this.rating.id,
+              rating: this.rating.rating
+            };
+            var ratings = this.$store.getters.getratingcollection;
+            ratings.beerRatings.push(beer);
+            console.log(ratings);
+            this.$store.dispatch("SaveRatingCollection", ratings);
+            }
+          });
       },
     },
   }

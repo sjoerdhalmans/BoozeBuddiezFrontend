@@ -76,11 +76,10 @@ export default {
   
   mounted()
   {
-    axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/46')
+    axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
     .then(data => (
     this.$store.dispatch('SaveRatingCollection', data.data)));
     console.log(this.$store.getters.getratingcollection);
-    
   },
 };
 </script>
