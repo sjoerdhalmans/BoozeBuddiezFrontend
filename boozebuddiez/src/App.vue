@@ -24,7 +24,6 @@ export default {
       .get('http://217.101.44.31:8083/api/public/beer/getAllBeers')
       .then(data => (
         console.table(data.data.bars),
-        console.log("BIEEEEEEEEER"),
         this.$store.dispatch("SaveBeerCollection", data.data.beers)
         ))
   },
