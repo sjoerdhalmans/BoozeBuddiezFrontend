@@ -1,14 +1,15 @@
 <template>
     <div class="row">
         <div class="col-5">  {{this.fullBar[0].name}}</div>
-        <div class="col-3"> </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> </div>
         <star-rating class="col-2"
+          @rating-selected="this.editBar"
      v-bind:increment="0.5"
      v-bind:max-rating="5"
      inactive-color="#000"
      active-color="#cc1166"
      v-bind:star-size="20"
-     v-bind:rating="rating.rating"
+     v-model="modelData"
     >
 </star-rating>
     </div>
@@ -17,10 +18,12 @@
 
 <script>
 import StarRating from 'vue-star-rating'
+import axios from 'axios'
 export default {
     data(){
         return{
-            fullBar: null
+            fullBar: null,
+            modelDate: 0,
         }
     },
     mounted(){
@@ -29,6 +32,41 @@ export default {
     methods:{
         getBarData(){
            this.fullBar = this.$store.getters.getBarCollection.filter(bar => bar.id == this.rating.barId)
+           this.modelData = this.rating.rating
+        },
+         editBar(){
+        axios.put("http://217.101.44.31:8086/api/public/bar/EditBarRating", {
+            rating: this.modelData,
+            barId: this.fullBar[0].id,
+            userId: this.$store.getters.getUser.id,
+            id: this.rating.id
+
+            }).then(respone => {
+                if (respone.status == 200) {
+            var bar = {
+              userId: this.$store.getters.getUser.id,
+              barId: this.fullBar[0].id,
+              rating: this.modelData,
+              id: this.rating.id
+            };
+            var ratings = this.$store.getters.getratingcollection;
+
+            var deleteBar = ratings.barRatings.filter(filterId => filterId.id != bar.id)
+            deleteBar.push(bar)
+
+            ratings.barRatings = deleteBar
+            console.log(ratings);
+            console.log(respone.status)
+            this.$store.dispatch("SaveRatingCollection", ratings);
+
+                this.$toasted.show("Bar rating changed succesfully!", {
+                    type: "success",
+                    theme: "toasted-primary",
+                    position: "bottom-right",
+                    duration: 2500,
+                });
+            }
+          });
         },
     },
        components: {

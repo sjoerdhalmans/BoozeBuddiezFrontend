@@ -1,5 +1,5 @@
 <template>
-  <div class="col-9">  
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">  
     <mapbox
     ref="map"
     access-token="pk.eyJ1IjoibWFyaW8wMjYiLCJhIjoiY2thcDFvZ2ZtMDFnaTJ6cGFiajRwN3didyJ9.CYOzUb9FrBkpqg-NcFbJfA"
@@ -173,7 +173,7 @@ methods: {
 <style>
 #map {
   width: 100%;
-  height: 800px;
+  height: 700px;
   top: 0; 
   bottom: 0;
   border-radius: 20px;

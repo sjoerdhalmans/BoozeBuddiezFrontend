@@ -1,8 +1,9 @@
 <template>
     <div class="row">
         <div class="col-5"> {{this.fullBeer[0].name}}</div>
-        <div class="col-3"> </div>
+        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> </div>
                 <star-rating class="col-2"
+                    @rating-selected="this.editBar"
      v-bind:increment="0.5"
      v-bind:max-rating="5"
      inactive-color="#000"
@@ -18,10 +19,12 @@
 <script>
 
 import StarRating from 'vue-star-rating'
+import axios from 'axios'
 export default {
         data(){
         return{
-            fullBeer: null
+            fullBeer: null,
+            modelDate: 0,
         }
     },
     mounted(){
@@ -30,6 +33,41 @@ export default {
     methods:{
         getBeerData(){
            this.fullBeer = this.$store.getters.getBeerCollection.filter(beer => beer.id == this.rating.beerId)
+            this.modelData = this.rating.rating
+        },
+                 editBar(){
+        axios.put("http://217.101.44.31:8086/api/public/bar/EditBeerRating", {
+            rating: this.modelData,
+            beerId: this.fullBeer[0].id,
+            userId: this.$store.getters.getUser.id,
+            id: this.rating.id
+
+            }).then(respone => {
+                if (respone.status == 200) {
+            var beer = {
+              userId: this.$store.getters.getUser.id,
+              beerId: this.fullBeer[0].id,
+              rating: this.modelData,
+              id: this.rating.id
+            };
+            var ratings = this.$store.getters.getratingcollection;
+
+            var deleteBeer = ratings.barRatings.filter(filterId => filterId.id != beer.id)
+            deleteBeer.push(beer)
+
+            ratings.beerRatings = deleteBeer
+            console.log(ratings);
+            console.log(respone.status)
+            this.$store.dispatch("SaveRatingCollection", ratings);
+
+                this.$toasted.show("Beer rating changed succesfully!", {
+                    type: "success",
+                    theme: "toasted-primary",
+                    position: "bottom-right",
+                    duration: 2500,
+                });
+            }
+          });
         },
     },
        components: {

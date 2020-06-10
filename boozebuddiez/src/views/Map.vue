@@ -128,7 +128,7 @@ methods: {
 <style>
 #map {
   width: 100%;
-  height: 500px;
+  height: 100px;
   position: absolute; 
   top: 0; 
   bottom: 0;
