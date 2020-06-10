@@ -2,6 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from './router'
 import store from './store'
+import Toasted from 'vue-toasted';
 // Import the Auth0 configuration
 import { domain, clientId } from "../auth_config.json";
 
@@ -9,6 +10,8 @@ import { domain, clientId } from "../auth_config.json";
 import { Auth0Plugin } from "./auth";
 
 import vuetify from './plugins/vuetify';
+
+Vue.use(Toasted)
 
 // Install the authentication plugin here
 Vue.use(Auth0Plugin, {
