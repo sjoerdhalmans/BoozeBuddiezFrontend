@@ -10,7 +10,7 @@
           <h3 class="col-6">My bar ratings</h3>
           <div class="col-2"></div>
           <div data-app class ="col-3 addbutton">
-            <addnewbarrating></addnewbarrating>
+            <newbarratingmodel></newbarratingmodel>
           </div>
         </div>
         <div class="bar-rating-list" >
@@ -46,7 +46,7 @@ import Navigation from "@/components/Navigation.vue";
 import barratingcard from '@/components/rating/barratingcard.vue';
 import beerratingcard from '@/components/rating/beerratingcard.vue';
 import addnewbeerrating from '@/components/rating/addnewbeerrating.vue';
-import addnewbarrating from '@/components/rating/addnewbarrating.vue';
+import newbarratingmodel from '@/components/rating/newbarratingmodel.vue';
 export default {
   
   name: "App",
@@ -55,8 +55,8 @@ export default {
     Navigation,
     barratingcard,
     beerratingcard,
+    newbarratingmodel,
     addnewbeerrating,
-     addnewbarrating,
   },
   computed:
   {
