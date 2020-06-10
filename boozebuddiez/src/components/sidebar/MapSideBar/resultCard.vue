@@ -31,8 +31,6 @@ methods:{
             lat: this.bar.latitude
         }
         this.$store.dispatch("SaveBarFocus", save)
-        console.table(save)
-        console.log(this.$store.getters.getBarFocus)
     }
 }
 }

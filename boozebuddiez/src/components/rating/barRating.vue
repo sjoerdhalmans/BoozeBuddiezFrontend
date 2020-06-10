@@ -1,33 +1,5 @@
 <template>
-  <v-card style="color:blanchedalmond">
-        <v-card-title>
-          <span class="headline">New Rating</span>
-        </v-card-title>
-        <v-card-text>
-          <v-container>
-            <v-row>
-              <v-col cols="12" sm="6">
-                <v-autocomplete :items="this.barnames" label="Bars" v-model="rating.name"></v-autocomplete>
-              </v-col>
-            </v-row>
-          </v-container>
-          <v-container>
-            <StarRating
-              v-bind:increment="0.5"
-              v-bind:max-rating="5"
-              inactive-color="#000"
-              active-color="#cc1166"
-              v-model="rating.rating"
-            ></StarRating>
-          </v-container>
-          <small>*indicates required field</small>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" text @click="save">Save</v-btn>
-        </v-card-actions>
-      </v-card>
+  
 </template>
 
 <script>
@@ -55,7 +27,6 @@ export default {
       this.$store.getters.getBarCollection.filter(bar =>
         this.barnames.push(bar.name)
       );
-      console.table(this.barnames);
     },
     save() {
       this.dialog = false;

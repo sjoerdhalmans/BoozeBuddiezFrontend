@@ -14,7 +14,6 @@ export default Vue.extend({
       }
     },
     mounted(){
-      this.getBarData()
     },
   props: {
     feature: {
@@ -25,9 +24,6 @@ export default Vue.extend({
   methods: {
     popupClicked() {
       alert('Learn more clicked')
-    },
-     getBarData() {
-     console.log(this.$store)
     },
   },
 })

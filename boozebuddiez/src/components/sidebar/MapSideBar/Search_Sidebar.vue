@@ -5,7 +5,6 @@
       </div>
        <v-form class="form_class"
     ref="form"
-    v-model="valid"
     lazy-validation
   >
     <v-text-field
@@ -52,9 +51,8 @@ data(){
 },
 methods:{
         filterBars(){
-            console.table(this.model)
+
              var result = this.$store.getters.getBarCollection.filter(bar => bar.zipcode == this.model.zipcode)
-             console.table(result)
              this.$store.dispatch("SaveSearchResult", result)
         }
     }

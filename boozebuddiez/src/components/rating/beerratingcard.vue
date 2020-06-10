@@ -1,15 +1,15 @@
 <template>
-    <div class="row">
+    <div class="row" v-if="fullBeer !== null || undefined ">
         <div class="col-5"> {{this.fullBeer[0].name}}</div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> </div>
                 <star-rating class="col-2"
-                    @rating-selected="this.editBar"
+                    @rating-selected="this.editBeer"
      v-bind:increment="0.5"
      v-bind:max-rating="5"
      inactive-color="#000"
      active-color="#cc1166"
      v-bind:star-size="20"
-     v-bind:rating="rating.rating"
+     v-model="modelData"
     >
 </star-rating >
     </div>
@@ -35,7 +35,7 @@ export default {
            this.fullBeer = this.$store.getters.getBeerCollection.filter(beer => beer.id == this.rating.beerId)
             this.modelData = this.rating.rating
         },
-                 editBar(){
+     editBeer(){
         axios.put("http://217.101.44.31:8086/api/public/bar/EditBeerRating", {
             rating: this.modelData,
             beerId: this.fullBeer[0].id,
@@ -51,13 +51,11 @@ export default {
               id: this.rating.id
             };
             var ratings = this.$store.getters.getratingcollection;
-
-            var deleteBeer = ratings.barRatings.filter(filterId => filterId.id != beer.id)
+            var deleteBeer = ratings.beerRatings.filter(filterId => filterId.id != beer.id)
             deleteBeer.push(beer)
 
             ratings.beerRatings = deleteBeer
-            console.log(ratings);
-            console.log(respone.status)
+
             this.$store.dispatch("SaveRatingCollection", ratings);
 
                 this.$toasted.show("Beer rating changed succesfully!", {

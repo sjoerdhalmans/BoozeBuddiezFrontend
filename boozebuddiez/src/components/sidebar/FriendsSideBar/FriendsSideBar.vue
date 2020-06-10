@@ -15,7 +15,6 @@ export default {
     name:"FriendsSideBar",
         computed:{
         friends(){
-            console.table(this.$store.getters.getFriends)
             return this.$store.getters.getFriends
         }
     },

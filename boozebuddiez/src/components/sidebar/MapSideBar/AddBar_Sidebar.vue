@@ -67,7 +67,7 @@ export default {
             this.$store.dispatch("SaveSearchResult", null)
         },
         addNewBarToDB(){
-            console.table(this.bar)
+
             axios.post("http://217.101.44.31:8084/api/public/bar/addBar", {
             name: this.bar.name,
             adress: this.bar.address,
@@ -77,10 +77,10 @@ export default {
             latitude: this.bar.location.lng
 
             }).then(respone => {
-                console.log(respone.status)
+                if(respone.status == 200){
                 this.$store.dispatch('SaveNewBar', null)
-                console.log(this.$store.getters.getNewBar)
                 this.$store.dispatch("SaveSearchResult", null)
+                }
                // location.reload()
             })
         },

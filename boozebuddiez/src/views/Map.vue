@@ -119,7 +119,6 @@ methods: {
               }
         this.Markers.push(marker)
         });   
-        console.log(this.Markers)
     }
   },
 }

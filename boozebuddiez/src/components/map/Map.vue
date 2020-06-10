@@ -55,10 +55,9 @@ methods: {
   var lat = e.lngLat.lat
   var lng = e.lngLat.lng
   var url = "http://open.mapquestapi.com/geocoding/v1/reverse?key=7YGwtYpYPF2FbGl6R3Wkf2rWIbZPi2c2&location="+Number(lat)+","+Number(lng)+"&includeRoadMetadata=true&includeNearestIntersection=true"
-  console.log(url)
+
   axios.get(url)
         .then(response => (
-        console.table(response.data.results[0].locations),
         this.$store.dispatch('SaveNewBar',response.data.results[0].locations),
         this.$store.dispatch('SaveSearchResult', null)
         ))
@@ -142,7 +141,6 @@ methods: {
               }
         this.Markers.push(marker)
         });   
-        console.log(this.Markers)
     },
     flyToSearch(){
       if(mapRef !== null){
@@ -155,7 +153,6 @@ methods: {
       }
     },
     flyTo(e){
-      console.table(e)
       if(mapRef !== null){
         mapRef.flyTo({
         center: [

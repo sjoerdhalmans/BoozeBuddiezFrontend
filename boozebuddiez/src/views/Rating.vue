@@ -45,7 +45,7 @@ import axios from 'axios';
 import Navigation from "@/components/Navigation.vue";
 import barratingcard from '@/components/rating/barratingcard.vue';
 import beerratingcard from '@/components/rating/beerratingcard.vue';
-import addnewbeerrating from '@/components/rating/addnewbeerrating.vue';
+import addnewbeerrating from '@/components/rating/beer/addnewbeerrating.vue';
 import newbarratingmodel from '@/components/rating/newbarratingmodel.vue';
 export default {
   
@@ -79,7 +79,6 @@ export default {
     axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
     .then(data => (
     this.$store.dispatch('SaveRatingCollection', data.data)));
-    console.log(this.$store.getters.getratingcollection);
   },
 };
 </script>

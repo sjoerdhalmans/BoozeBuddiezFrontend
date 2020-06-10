@@ -49,7 +49,6 @@ export default {
                             })
                     }
                     else {
-                        console.log(res)
                         this.dispatch("SaveUser", res.data)
                     }
                 })

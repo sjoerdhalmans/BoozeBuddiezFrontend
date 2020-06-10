@@ -1,5 +1,5 @@
 <template>
-    <div class="row">
+    <div class="row" v-if="fullBar !== null || undefined ">
         <div class="col-5">  {{this.fullBar[0].name}}</div>
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> </div>
         <star-rating class="col-2"
@@ -55,8 +55,6 @@ export default {
             deleteBar.push(bar)
 
             ratings.barRatings = deleteBar
-            console.log(ratings);
-            console.log(respone.status)
             this.$store.dispatch("SaveRatingCollection", ratings);
 
                 this.$toasted.show("Bar rating changed succesfully!", {

@@ -12,7 +12,7 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-autocomplete :items="this.barnames" label="Bars" v-model="rating.name"></v-autocomplete>
+                <v-autocomplete :items="this.barnames" label="Unrated Bars" v-model="rating.name"></v-autocomplete>
               </v-col>
             </v-row>
           </v-container>
@@ -38,12 +38,12 @@
 </template>
 
 <script>
-import StarRating from 'vue-star-rating'
-import axios from 'axios'
+import axios from "axios";
+import StarRating from "vue-star-rating";
 export default {
   data: () => ({
     dialog: false,
-        Bars: null,
+    Bars: null,
     barnames: [],
     rating: {
       rating: null,
@@ -52,12 +52,12 @@ export default {
     }
   }),
   components: {
-    StarRating,
+    StarRating
   },
   mounted() {
     this.loadBars();
-    },
-    methods: {
+  },
+  methods: {
     loadBars() {
       this.Bars = this.$store.getters.getBarCollection;
       this.$store.getters.getBarCollection.filter(bar =>
@@ -71,8 +71,8 @@ export default {
       this.sendtodb();
     },
     sendtodb() {
-      axios.post("http://217.101.44.31:8086/api/public/bar/rateBar", {
-        
+      axios
+        .post("http://217.101.44.31:8086/api/public/bar/rateBar", {
           objectId: this.rating.id,
           objectRating: this.rating.rating,
           userId: this.$store.getters.getUser.id
