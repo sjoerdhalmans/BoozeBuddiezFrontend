@@ -1,5 +1,5 @@
 <template>
-  <div class="col-3 container sideBar ">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 container sideBar ">
       <div  class="row" id="mainContent"> 
           <div class="col-12" v-if="this.chosenSideBar == 0">
               <MapSideBar/>
@@ -12,7 +12,7 @@
           </div>
       </div>
       <div class="row" align="center">
-          <div class="col-3"></div>
+          <div class="col-3"> </div>
           <div class="col-2">
               <div v-bind:class="[chosenSideBar == 0 ? selected : '']" class="button" id="button_map" @click="setSidebar(0)"></div>
           </div>
@@ -23,6 +23,7 @@
               <div v-bind:class="[chosenSideBar == 2 ? selected : '']" class="button" id="button_friends" @click="setSidebar(2)"></div>
             </div>
       </div>
+      
   </div>
 </template>
 
@@ -61,6 +62,8 @@ export default {
     box-shadow: 2px 2px;
     background-image: url('../../assets/images/boozebuddieslogo.png');
     background-position: center;
+    margin-bottom: 10px;
+    min-height: 500px;
 }
 .button{
     background-color: white;
