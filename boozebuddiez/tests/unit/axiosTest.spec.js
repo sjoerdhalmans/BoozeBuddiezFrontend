@@ -11,12 +11,14 @@ describe('test.vue', () =>{
         const wrapper = mount(resultCard, {
             store,
             localVue,
-            bar: {
-              name: 'yeet',
-              zipcode: '123',
-              adress: 'teststraat 3',
-              telephoneNumber:'1236456978',
-            }
+            propsData: {
+              bar: {
+                name: 'yeet',
+                zipcode: '123',
+                adress: 'teststraat 3',
+                telephoneNumber:'1236456978',
+              },
+            },
           })
         expect(wrapper.isVueInstance()).toBeTruthy()
     })
