@@ -2,7 +2,9 @@ import Axios from "axios";
 
 export default {
     state: {
-        user: null,
+        user: {
+            id: 46
+        },
         friends: [],
     },
     mutations: {
