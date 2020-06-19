@@ -3,7 +3,7 @@
     <v-dialog v-model="this.state" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          color="primary"
+          color=#795548
           v-bind="attrs"
           v-on="on"
           v-on:click="open"
