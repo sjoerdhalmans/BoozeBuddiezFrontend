@@ -11,7 +11,7 @@
           Add new Rating
         </v-btn>
       </template>
-      <v-card style="color:blanchedalmond">
+      <v-card class = "modelbackground">
         <v-card-title >
           <div class="row" v-if="this.selectedScreenData == 0">
             <span class="headline col 6">New Rating</span>
@@ -39,7 +39,6 @@ import addNewBeerForm from './addNewBeerForm'
   export default {
     data: () => ({
       selectedScreenData: 0,
-      dialog: false
     }),
     computed:{
       state(){
@@ -62,5 +61,7 @@ import addNewBeerForm from './addNewBeerForm'
 </script>
 
 <style>
-
+.modelbackground{
+    background: blanchedalmond !important;
+}
 </style>
