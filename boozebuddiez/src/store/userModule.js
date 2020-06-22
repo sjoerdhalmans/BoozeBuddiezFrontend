@@ -6,6 +6,7 @@ export default {
             id: 46
         },
         friends: [],
+        potatoes: [],
     },
     mutations: {
         SAVE_USER(state, user) {
@@ -14,6 +15,9 @@ export default {
         SAVE_FRIENDS(state, friends) {
             state.friends = friends;
         },
+        SAVE_POTATOES(state, potatoes) {
+            state.potatoes = potatoes
+        }
     },
     getters: {
         getUser: state => {
@@ -21,6 +25,9 @@ export default {
         },
         getFriends: state => {
             return state.friends;
+        },
+        getPotatoes: state => {
+            return state.potatoes;
         },
 
     },
@@ -36,7 +43,12 @@ export default {
         SaveFriends({ commit }, friends) {
             commit("SAVE_FRIENDS", friends);
         },
+        SavePotatoes(context, potatoes) {
+            context.commit("SAVE_POTATOES", potatoes)
+        },
         async getUser(context, user) {
+            var userid
+
             await Axios
                 .get('http://217.101.44.31:8081/api/public/user/getUserByEmail/' + user.email)
                 .then(res => {
@@ -48,12 +60,20 @@ export default {
                             })
                             .then(res => {
                                 this.dispatch("SaveUser", res.data)
+                                userid = res.data.id
                             })
                     }
                     else {
                         this.dispatch("SaveUser", res.data)
+                        userid = res.data.id
                     }
                 })
-        }
+                await Axios
+                .get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + userid)
+                .then(res => {
+                    res
+                    this.dispatch("SaveRatingCollection", res.data)
+                })
+        },
     }
 };
