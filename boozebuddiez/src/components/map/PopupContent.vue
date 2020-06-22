@@ -1,9 +1,13 @@
 <template>
-  <div class="content row">
+  <div class="content row" v-if="this.popupState == 0">
     <div class="col-6">
        <div class="row">
-         <div class="col-6">Bar Details</div>
-       </div>
+         <div  class="col-6" 
+          >Bar Details</div >
+           <div  class="col-6" 
+           v-on:click="changeContent(1)"
+          >Edit bar details</div >
+       </div> 
       <div class="bardetails">
          <div>Name: {{this.loadBar[0].name}}</div>
          <div >Adress: {{this.loadBar[0].adress}}  </div>
@@ -44,12 +48,25 @@
     <div class="col-6">
       <div class="row">
          <div class="col-6">Beer menu</div>
-         <div class="col-6">Add beer</div>
+         <div class="col-6"
+         v-on:click="changeContent(2)">Add beer</div>
       </div>
       <div v-for="beer in this.loadBar[0].beers" :key="beer.beer.id">
         <BeerMenuItem v-bind:beer="beer"></BeerMenuItem>
-      </div>
+         </div>
+       </div>
+      <div>
     </div>
+  </div>
+  <div v-else-if="this.popupState == 1">
+    <EditBarForm v-bind:bar="this.loadBar[0]"></EditBarForm>
+  </div>
+  <div v-else-if="this.popupState == 2">
+    <AddBeerToBarForm v-bind:bar="this.loadBar[0]"></AddBeerToBarForm>
+  </div>
+   <div v-else-if="this.popupState == 3">
+    Edit beer prices
+    <EditBeerPriceForm></EditBeerPriceForm>
   </div>
 </template>
  
@@ -59,8 +76,14 @@ import store from '../../store'
 import axios from 'axios'
 import StarRating from "vue-star-rating";
 import BeerMenuItem from './BeerMenuItem'
+import EditBarForm from './editBarForm'
+import AddBeerToBarForm from './AddBeerToBarForm'
+import EditBeerPriceForm from './EditBeerPriceForm'
 export default Vue.extend({
     computed:{
+      popupState(){
+        return store.getters.getPopupState 
+      },
       loadBar(){
         return store.getters.getBarCollection.filter(bar => bar.name == this.feature.properties.title )
       },
@@ -76,7 +99,10 @@ export default Vue.extend({
     },
     components:{
     StarRating,
-    BeerMenuItem
+    BeerMenuItem,
+    EditBarForm,
+    AddBeerToBarForm,
+    EditBeerPriceForm
     },
   props: {
     feature: {
@@ -89,6 +115,9 @@ export default Vue.extend({
     this.loadRating()
   },
   methods:{
+    changeContent(index){
+      store.dispatch("SavePopupState", index)
+    },
     loadBarRating(){
       axios
       .get('http://217.101.44.31:8086/api/public/bar/getBarAverage/' + this.loadBar[0].id)
@@ -156,6 +185,12 @@ export default Vue.extend({
       .then(response => (
       console.table(response.data),
       store.dispatch('SaveRatingCollection', response.data),
+       this.$toasted.show("Bar rating added succesfully!", {
+                    type: "success",
+                    theme: "toasted-primary",
+                    position: "bottom-right",
+                    duration: 2500,
+                }),
         this.loadBarRating(),
       this.loadRating()
     ))}

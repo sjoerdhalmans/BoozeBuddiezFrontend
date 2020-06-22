@@ -8,12 +8,14 @@ import userModule from "./userModule";
 import ratingModule from "./ratingModule";
 import timelineModule from './timelineModule';
 import beerModule from './beerModule';
+import popupModule from './popupModule'
 
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules: {
+    popupModule: popupModule,
     barModule: barModule,
     beerModule: beerModule,
     searchModule: searchModule,
