@@ -1,5 +1,5 @@
 <template>
-  <div class="content row">
+  <div class="content row" style="background-color: blanchedalmond;">
     <div class="col-6">
        <div class="row">
          <div class="col-6">Bar Details</div>

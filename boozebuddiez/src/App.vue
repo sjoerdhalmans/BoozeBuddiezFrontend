@@ -51,10 +51,11 @@ h2 {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  background-color: blanchedalmond;
 }
 
 #nav {
-  padding-top: 30px;
+  
 }
 
 #nav a {
