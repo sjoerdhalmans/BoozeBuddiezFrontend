@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">  
+  <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9" style="background-color: blanchedalmond;">  
     <mapbox
     ref="map"
     access-token="pk.eyJ1IjoibWFyaW8wMjYiLCJhIjoiY2thcDFvZ2ZtMDFnaTJ6cGFiajRwN3didyJ9.CYOzUb9FrBkpqg-NcFbJfA"

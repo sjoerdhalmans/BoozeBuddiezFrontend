@@ -1,5 +1,5 @@
 <template>
-  <div class="content row" v-if="this.popupState == 0">
+  <div class="content row" style="background-color: blanchedalmond;" v-if="this.popupState == 0">
     <div class="col-6">
        <div class="row">
          <div  class="col-6" 

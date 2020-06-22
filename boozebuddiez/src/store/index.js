@@ -9,6 +9,8 @@ import ratingModule from "./ratingModule";
 import timelineModule from './timelineModule';
 import beerModule from './beerModule';
 import popupModule from './popupModule'
+import createPersistedState from 'vuex-persistedstate'
+
 
 
 Vue.use(Vuex);
@@ -23,5 +25,8 @@ export default new Vuex.Store({
     userModule: userModule,
     ratingModule: ratingModule,
     timelineModule: timelineModule,
-  }
+  },
+  plugins: [createPersistedState({
+    storage: window.sessionStorage,
+})],
 });

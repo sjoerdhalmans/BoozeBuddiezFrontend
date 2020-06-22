@@ -1,18 +1,27 @@
 <template>
-  <div class="toolbar">
+<div>
+  <b-navbar toggleable="lg" variant="info" style="background-color: blanchedalmond!important;">
     <img alt="booze logo" class="logo" src="../assets/images/boozebuddieslogo.png" />
-    <h2 class="logotext" v-if="$auth.isAuthenticated" to="/map">BoozeBuddies</h2>
-    <button class="routerlink logoutbutton" v-if="$auth.isAuthenticated" v-on:click="this.$auth.logout">Logout</button>
-    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/rating">Rating</router-link>
-    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/map">Map</router-link>
-    <!-- <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
-    <router-link class="routerlink" v-if="$auth.isAuthenticated" to="/about">About</router-link> -->
-    <br /><br /><br /><br /><br />
-    <!-- <router-link class="routerlink" to="/">Home</router-link> -->
-  </div>
+    <b-navbar-brand href="map">BoozeBuddies</b-navbar-brand>
+    
+    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item v-if="$auth.isAuthenticated" href="Map">Map</b-nav-item>
+          <b-nav-item v-if="$auth.isAuthenticated" href="Rating">Rating</b-nav-item>
+          <!-- <b-nav-item href="Logout">Logout</b-nav-item> -->
+          <b-nav-item v-if="$auth.isAuthenticated" v-on:click="this.$auth.logout">Logout</b-nav-item>
+        </b-navbar-nav>
+      </b-collapse>
+  </b-navbar>
+<br>
+</div>
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 export default {
   name: "Navigation",
   props: {
@@ -22,6 +31,7 @@ export default {
 </script>
 
 <style>
+
 @media (min-width:700px) {
   .toolbar {
     position: relative;
@@ -71,7 +81,7 @@ export default {
   border-style: none;
   height: auto;
   max-height: 85px;
-  width: 25%;
+  width: 20%;
   float: left;
   }
   .logotext {
@@ -84,6 +94,5 @@ export default {
   .routerlink {
   visibility: hidden;
   }
-
 }
 </style>
