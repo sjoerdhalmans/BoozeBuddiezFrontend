@@ -3,39 +3,35 @@
     <div id="nav">
       <Navigation />
     </div>
-    <div class="row">
-      <div class="col-1"></div>
-      <div class="col-4 content">
-        <div class="row">
-          <h3 class="col-6">My bar ratings</h3>
-          <div class="col-2"></div>
-          <div data-app class="col-3 addbutton">
-            <newbarratingmodel></newbarratingmodel>
+
+    <v-container>
+      <v-row>
+
+        <v-col cols="12" sm="6" md="6" style="height: auto;">
+          <div class="row">
+            <h3 class="col-md-6 col-sm-6" style="text-align: left">My bar ratings</h3>
           </div>
-        </div>
-        <div class="bar-rating-list">
-          <div v-for="barrating in this.barrating.barRatings" :key="barrating.id">
-            <barratingcard v-bind:rating="barrating" />
+          <div class="bar-rating-list">
+            <div v-for="barrating in this.barrating.barRatings" :key="barrating.id">
+              <barratingcard v-bind:rating="barrating" />
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-2"></div>
-      <div class="col-4 content">
-        <div class="row">
-          <h3 class="col-6">My beer ratings</h3>
-          <div class="col-2"></div>
-          <div data-app class="col-3 addbutton">
-            <addnewbeerrating></addnewbeerrating>
+        </v-col>
+
+        <v-col cols="12" sm="6" md="6">
+          <div class="row">
+            <h3 class="col-6" style="text-align: left">My beer ratings</h3>
+            <div class="col-md-2 col-sm-0"></div>
           </div>
-        </div>
-        <div class="beer-rating-list">
-          <div v-for="beerrating in this.beerrating.beerRatings" :key="beerrating.id">
-            <beerratingcard v-bind:rating="beerrating" />
+          <div class="beer-rating-list">
+            <div v-for="beerrating in this.beerrating.beerRatings" :key="beerrating.id">
+              <beerratingcard v-bind:rating="beerrating" />
+            </div>
           </div>
-        </div>
-      </div>
-      <div class="col-1"></div>
-    </div>
+        </v-col>
+
+      </v-row>
+    </v-container>
   </div>
 </template>
 
@@ -44,17 +40,17 @@ import "../assets/css/main.css";
 import Navigation from "@/components/Navigation.vue";
 import barratingcard from "@/components/rating/barratingcard.vue";
 import beerratingcard from "@/components/rating/beerratingcard.vue";
-import addnewbeerrating from "@/components/rating/beer/addnewbeerrating.vue";
-import newbarratingmodel from "@/components/rating/newbarratingmodel.vue";
+//import addnewbeerrating from "@/components/rating/beer/addnewbeerrating.vue";
+//import newbarratingmodel from "@/components/rating/newbarratingmodel.vue";
 export default {
   name: "App",
 
   components: {
     Navigation,
     barratingcard,
-    beerratingcard,
-    newbarratingmodel,
-    addnewbeerrating
+    beerratingcard
+    // newbarratingmodel,
+    // addnewbeerrating
   },
   computed: {
     barrating() {
@@ -70,8 +66,7 @@ export default {
     return {};
   },
 
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 a

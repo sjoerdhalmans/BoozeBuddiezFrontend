@@ -1,17 +1,17 @@
 <template>
-    <div class="row" v-if="fullBar !== null || undefined ">
-        <div class="col-5">  {{this.fullBar[0].name}}</div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="background-color: blanchedalmond;"> </div>
-        <star-rating class="col-2"
+    <div class="row" style="height: auto;" v-if="fullBar !== null || undefined ">
+        <div class="col-sm-6 col-md-6" style="text-align: left;">  {{this.fullBar[0].name}}</div>
+        <star-rating
           @rating-selected="this.editBar"
-     v-bind:increment="0.5"
-     v-bind:max-rating="5"
-     inactive-color="#000"
-     active-color="#cc1166"
-     v-bind:star-size="20"
-     v-model="modelData"
-    >
-</star-rating>
+            v-bind:increment="0.5"
+            v-bind:max-rating="5"
+            inactive-color="#000"
+            active-color="#cc1166"
+            v-bind:star-size="20"
+            v-model="modelData"
+            >
+        </star-rating>
+
     </div>
     
 </template>

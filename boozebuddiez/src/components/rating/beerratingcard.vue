@@ -1,7 +1,7 @@
 <template>
     <div class="row" v-if="fullBeer !== null || undefined ">
-        <div class="col-5"> {{this.fullBeer[0].name}}</div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3"> </div>
+        <div class="col-3"> {{this.fullBeer[0].name}}</div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"> </div>
                 <star-rating class="col-2"
                     @rating-selected="this.editBeer"
      v-bind:increment="0.5"
