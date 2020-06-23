@@ -1,6 +1,6 @@
 <template>
     <div class="row" v-if="fullBeer !== null || undefined ">
-        <div class="col-5"> {{this.fullBeer[0].name}}</div>
+        <div class="col-5" style="text-align: left;"> {{this.fullBeer[0].name}}</div>
                 <star-rating class="col-2"
                     @rating-selected="this.editBeer"
                     v-bind:increment="0.5"
