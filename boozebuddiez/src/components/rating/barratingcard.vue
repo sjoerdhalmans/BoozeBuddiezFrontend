@@ -12,7 +12,6 @@
             v-model="modelData"
             >
         </star-rating>
-
     </div>
     
 </template>
