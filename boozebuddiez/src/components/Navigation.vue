@@ -9,6 +9,7 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item v-if="$auth.isAuthenticated" href="Map">Map</b-nav-item>
+          <b-nav-item v-if="$auth.isAuthenticated" href="Dashboard">Dashboard</b-nav-item>
           <b-nav-item v-if="$auth.isAuthenticated" href="Rating">Rating</b-nav-item>
           <!-- <b-nav-item href="Logout">Logout</b-nav-item> -->
           <b-nav-item v-if="$auth.isAuthenticated" v-on:click="this.$auth.logout">Logout</b-nav-item>
