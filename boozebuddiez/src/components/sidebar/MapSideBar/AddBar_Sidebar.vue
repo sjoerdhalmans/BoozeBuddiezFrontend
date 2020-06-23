@@ -10,7 +10,7 @@
         <v-text-field label="Zipcode" v-model="bar.zipcode" required></v-text-field>
         <v-text-field label="Telephone number" v-model="bar.telephoneNumber"></v-text-field>
 
-        <v-btn id="search" @click="addNewBarToDB"></v-btn>
+        <v-btn id="plus" @click="addNewBarToDB"></v-btn>
       </v-form>
     </div>
 
@@ -84,6 +84,12 @@ export default {
 
 .return {
   margin-top: 10px;
-  margin-right: 25%
+  margin-right: 25%;
+}
+
+#plus {
+  background-position: center;
+  background-size: auto;
+  background-image: url("../../../assets/images/plus-icon.png");
 }
 </style>
