@@ -42,6 +42,11 @@
             v-model="starData"
             @rating-selected="this.editBarRating"
         ></StarRating>
+            <div class="row"> 
+              <div class="col 12">
+                <p @click="CheckInAtBar">Check in to this bar! </p>
+              </div>
+            </div>
          </div>
       </div>
     </div>
@@ -117,6 +122,27 @@ export default Vue.extend({
   methods:{
     changeContent(index){
       store.dispatch("SavePopupState", index)
+    },
+    CheckInAtBar(){
+      axios.post("http://217.101.44.31:8085/api/public/activity/postActivity",{
+          bar_id: this.loadBar[0].id,
+          user_id: store.getters.getUser.id
+      }).then(response =>{
+        console.log(response.status)
+        if(response.status === 200){
+          this.$toasted.show("You've succesfully checked in at this bar!", {
+                    type: "success",
+                    theme: "toasted-primary",
+                    position: "bottom-right",
+                    duration: 2500,
+                });
+
+            axios.get('http://217.101.44.31:8085/api/public/activity/getActivitiesOfMyFriends/'+ store.getters.getUser.id)
+          .then(response => (
+            store.dispatch("SaveTimeline", response.data.activities)
+        ))
+        }
+      })
     },
     loadBarRating(){
       axios
