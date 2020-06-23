@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="friends">
         <div class="row">
             <div class="col-12 friends">My Friends</div>
         </div>
@@ -37,13 +37,13 @@ export default {
 </script>
 
 <style>
-.timeline {
+.friends {
   overflow-x: hidden;
   overflow-y: auto;
   max-height: 570px;
 }
 
-.timeline::-webkit-scrollbar {
+.friends::-webkit-scrollbar {
   /* WebKit */
   width: 0;
   height: 0;
