@@ -4,14 +4,15 @@
         <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="opacity: 0;"> </div>
         <star-rating class="col-2"
           @rating-selected="this.editBar"
-     v-bind:increment="0.5"
-     v-bind:max-rating="5"
-     inactive-color="#000"
-     active-color="#cc1166"
-     v-bind:star-size="20"
-     v-model="modelData"
-    >
-</star-rating>
+            v-bind:increment="0.5"
+            v-bind:max-rating="5"
+            inactive-color="#000"
+            active-color="#cc1166"
+            v-bind:star-size="20"
+            v-model="modelData"
+            >
+        </star-rating>
+
     </div>
     
 </template>

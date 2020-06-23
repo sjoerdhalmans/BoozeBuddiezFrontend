@@ -18,7 +18,12 @@ export default {
   },
   computed: {
     activities() {
-      return this.$store.getters.getTimeline.slice().reverse();
+        try {
+            return this.$store.getters.getTimeline.slice().reverse();
+        } catch (error) {
+            console.log(error)
+            return null
+        }
     }
   },
   mounted() {
