@@ -8,14 +8,9 @@
     ref="form"
     lazy-validation
   >
-    <v-row>
-        <v-col cols="12" sm="6">
-            <v-autocomplete
-                label="List of beers"
-
-            ></v-autocomplete>
-        </v-col>
-    </v-row>
+      <div v-for="beer in beerlist" :key="beer.id">
+        <div>{{beer.name}}</div>
+      </div>
     <v-text-field
       label="price of 1 beer"
       v-model="Data.price"
@@ -31,10 +26,12 @@
 
 <script>
 import store from '../../store'
+
 export default { 
  props: ['bar'],
  data(){
      return{
+       items:["aaaaaa","bbbbbb"],
          Data:{
              barId: 0,
              beerId: 0,
@@ -44,10 +41,13 @@ export default {
  },
  computed:{
      beerlist(){
-       return store.getters.getBeerCollection.filter(beer => this.beernames.push(beer.name))
+       return store.getters.getBeerCollection
      }
  },
 methods:{
+   methodToRunOnSelect(payload) {
+            this.object = payload;
+          },
     saveChanges(){
         this.changeContent(0)
     },

@@ -5,6 +5,7 @@ import Profile from "@/views/Profile.vue";
 import Map from "../views/Home2.0.vue";
 import Rating from "../views/Rating.vue";
 import { authGuard } from "../auth/authGuard";
+import dashboard from '../views/Dashboard.vue'
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,12 @@ Vue.use(VueRouter)
     component: Map,
     beforeEnter: authGuard
   },
+  {
+  path: "/dashboard",
+  name: "dasboard",
+  component: dashboard,
+  beforeEnter: authGuard
+},
   {
     path: "/rating",
     name: "rating",

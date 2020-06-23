@@ -18,4 +18,4 @@ export default {
         commit("SAVE_BEERCOLLECTION", beers);
       },
     }
-  };
+  };  

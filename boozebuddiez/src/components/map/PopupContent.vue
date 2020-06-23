@@ -58,8 +58,6 @@
     <div class="col-6">
       <div class="row">
          <div class="col-6">Beer menu</div>
-         <div class="col-6"
-         v-on:click="changeContent(2)">Add beer</div>
       </div>
       <div v-for="beer in this.loadBar[0].beers" :key="beer.beer.id">
         <BeerMenuItem v-bind:beer="beer"></BeerMenuItem>
@@ -71,13 +69,6 @@
   <div v-else-if="this.popupState == 1">
     <EditBarForm v-bind:bar="this.loadBar[0]"></EditBarForm>
   </div>
-  <div v-else-if="this.popupState == 2">
-    <AddBeerToBarForm v-bind:bar="this.loadBar[0]"></AddBeerToBarForm>
-  </div>
-   <div v-else-if="this.popupState == 3">
-    Edit beer prices
-    <EditBeerPriceForm></EditBeerPriceForm>
-  </div>
 </template>
  
 <script>
@@ -87,8 +78,6 @@ import axios from 'axios'
 import StarRating from "vue-star-rating";
 import BeerMenuItem from './BeerMenuItem'
 import EditBarForm from './editBarForm'
-import AddBeerToBarForm from './AddBeerToBarForm'
-import EditBeerPriceForm from './EditBeerPriceForm'
 export default Vue.extend({
     computed:{
       popupState(){
@@ -111,8 +100,6 @@ export default Vue.extend({
     StarRating,
     BeerMenuItem,
     EditBarForm,
-    AddBeerToBarForm,
-    EditBeerPriceForm
     },
   props: {
     feature: {

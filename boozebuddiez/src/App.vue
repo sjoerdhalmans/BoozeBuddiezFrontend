@@ -21,8 +21,9 @@ export default {
 
             axios
       .get('http://217.101.44.31:8083/api/public/beer/getAllBeers')
-      .then(data => (
-        this.$store.dispatch("SaveBeerCollection", data.data.beers)
+      .then(data => (console.table(data.data.beers),
+        this.$store.dispatch("SaveBeerCollection", data.data.beers),
+        console.table(this.$store.getters.getBeerCollection)
         ))
   },
   data: () => ({
@@ -52,10 +53,6 @@ h2 {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-color: blanchedalmond;
-}
-
-#nav {
-  
 }
 
 #nav a {
