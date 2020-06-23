@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="row">
-        <div class="col-12">My Timeline</div>
+        <div class="col-12 timeline">My Timeline</div>
     </div>
     <div v-for="activity in this.activities" :key="activity.id">
         <timelineCard v-bind:activity="activity"/>
@@ -31,5 +31,13 @@ export default {
 </script>
 
 <style>
+.timeline {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
+.timeline::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
 </style>
