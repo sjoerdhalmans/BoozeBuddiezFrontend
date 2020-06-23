@@ -22,7 +22,7 @@ export default {
     data(){
         return{
             fullBar: null,
-            modelDate: 0,
+            modelData: 0,
         }
     },
     mounted(){
@@ -48,9 +48,11 @@ export default {
               rating: this.modelData,
               id: this.rating.id
             };
+            console.log(bar)
             var ratings = this.$store.getters.getratingcollection;
 
-            var deleteBar = ratings.barRatings.filter(filterId => filterId.id != bar.id)
+            var deleteBar = ratings.barRatings.filter(filterId => filterId.barId != bar.id)
+            console.log(deleteBar)
             deleteBar.push(bar)
 
             ratings.barRatings = deleteBar

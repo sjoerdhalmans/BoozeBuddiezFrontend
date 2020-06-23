@@ -51,6 +51,7 @@ import barratingcard from "@/components/rating/barratingcard.vue";
 import beerratingcard from "@/components/rating/beerratingcard.vue";
 import addnewbeerrating from "@/components/rating/beer/addnewbeerrating.vue";
 import newbarratingmodel from "@/components/rating/newbarratingmodel.vue";
+import Axios from 'axios';
 export default {
   name: "App",
 
@@ -75,10 +76,16 @@ export default {
     return {};
   },
 
-  mounted() {}
+  mounted() {
+    Axios
+                .get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
+                .then(res => {
+                    this.$store.dispatch("SaveRatingCollection", res.data)
+                })
+  }
 };
 </script>
-a
+
 <style>
 @media (min-width: 800px) {
   .content {
