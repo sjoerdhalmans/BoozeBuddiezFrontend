@@ -2,11 +2,11 @@
   <v-row justify="center">
     <v-dialog v-model="dialog" persistent max-width="600px">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color=#795548 v-bind="attrs" v-on="on">Add new Rating</v-btn>
+        <v-btn color=#795548 v-bind="attrs" v-on="on">Add Bar Rating</v-btn>
       </template>
       <v-card style="color:blanchedalmond">
         <v-card-title>
-          <span class="headline">New Rating</span>
+          <span class="headline">New Bar Rating</span>
         </v-card-title>
         <v-card-text>
           <v-container>

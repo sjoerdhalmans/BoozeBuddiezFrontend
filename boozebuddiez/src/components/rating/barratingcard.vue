@@ -1,7 +1,6 @@
 <template>
     <div class="row" v-if="fullBar !== null || undefined ">
         <div class="col-5">  {{this.fullBar[0].name}}</div>
-        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3" style="opacity: 0;"> </div>
         <star-rating class="col-2"
           @rating-selected="this.editBar"
             v-bind:increment="0.5"

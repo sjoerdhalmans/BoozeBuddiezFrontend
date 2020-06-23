@@ -8,14 +8,14 @@
           v-on="on"
           v-on:click="open"
         >
-          Add new Rating
+          Add
         </v-btn>
       </template>
       <v-card class = "modelbackground">
         <v-card-title >
           <div class="row" v-if="this.selectedScreenData == 0">
-            <span class="headline col 6">New Rating</span>
-             <span class="col 6" @click="selectedScreen(1)">Add a beer</span>
+            <span class="headline col 6">New Beer Rating</span>
+             <span class="col 6" @click="selectedScreen(1)"></span>
           </div>
           <div class="row" v-else >
             <span class="headline col 6" >Add a beer</span>

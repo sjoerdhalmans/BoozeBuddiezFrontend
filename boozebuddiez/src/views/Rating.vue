@@ -7,11 +7,13 @@
     <v-container>
       <v-row>
 
-        <v-col cols="12" sm="6" md="6" style="height: auto;">
-          <newbarratingmodel></newbarratingmodel>
-          <div class="row">
-            <h3 class="col-md-6 col-sm-6" style="text-align: left">My bar ratings</h3>
-          </div>
+        <v-col cols="12" sm="3" md="6" style="height: auto;">
+          <v-row >
+            <h3 class="col-md-6 col-sm-3" style="text-align: left">My bar ratings</h3>
+            <div data-app class="col-md-6 col-sm-3 addbutton">
+              <newbarratingmodel></newbarratingmodel>
+            </div>
+          </v-row>
           <div class="bar-rating-list">
             <div v-for="barrating in this.barrating.barRatings" :key="barrating.id">
               <barratingcard v-bind:rating="barrating" />
@@ -21,10 +23,12 @@
         </v-col>
         
 
-        <v-col cols="12" sm="6" md="6">
-          <addnewbeerrating></addnewbeerrating>
+        <v-col cols="12" sm="3" md="6" style="height: auto;">
           <div class="row">
-            <h3 class="col-6" style="text-align: left">My beer ratings</h3>
+            <h3 class="col-md-6 col-sm-3" style="text-align: left">My beer ratings</h3>
+            <div data-app class="col-md-6 col-sm-3 addbutton">
+              <addnewbeerrating></addnewbeerrating>
+            </div>
           </div>
           <div class="beer-rating-list">
             <div v-for="beerrating in this.beerrating.beerRatings" :key="beerrating.id">
@@ -76,7 +80,8 @@ export default {
 </script>
 a
 <style>
-.content {
+@media (min-width: 800px) {
+  .content {
   margin-top: 2%;
   word-wrap: break-word;
   height: 600px;
@@ -96,7 +101,7 @@ a
 
 .beer-rating-list {
   margin-top: 1%;
-  height: 670px;
+  min-height: 670px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -144,5 +149,9 @@ a
   /* WebKit */
   width: 0;
   height: 0;
+}
+}
+@media (max-width: 800px) {
+  /* CSS that should be displayed if width is equal to or less than 800px goes here */
 }
 </style>
