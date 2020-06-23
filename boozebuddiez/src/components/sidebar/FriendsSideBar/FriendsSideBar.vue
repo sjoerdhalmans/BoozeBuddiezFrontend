@@ -37,14 +37,16 @@ export default {
 </script>
 
 <style>
-.friends {
+.timeline {
   overflow-x: hidden;
   overflow-y: auto;
+  max-height: 570px;
 }
 
-.friends::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+.timeline::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 </style>
