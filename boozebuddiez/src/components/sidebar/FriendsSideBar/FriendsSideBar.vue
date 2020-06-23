@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="row">
-            <div class="col-12">My Friends</div>
+            <div class="col-12 friends">My Friends</div>
         </div>
         <div v-for="friend in this.friends" :key="friend.id">
             <div>{{friend.userTwoId.name}}.</div>
@@ -37,5 +37,14 @@ export default {
 </script>
 
 <style>
+.friends {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.friends::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
 
 </style>

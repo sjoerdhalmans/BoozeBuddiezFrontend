@@ -70,8 +70,7 @@ export default {
     return {};
   },
 
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 a
@@ -88,15 +87,29 @@ a
 
 .bar-rating-list {
   margin-top: 1%;
-  height: 700px;
+  height: 670px;
   background-image: url("../assets/images/barlogo.png");
   background-position: center;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .beer-rating-list {
   margin-top: 1%;
-  height: 700px;
+  height: 670px;
   background-image: url("../assets/images/boozebuddieslogo.png");
   background-position: center;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.bar-rating-list::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
+}
+
+.beer-rating-list::-webkit-scrollbar { /* WebKit */
+    width: 0;
+    height: 0;
 }
 </style>
