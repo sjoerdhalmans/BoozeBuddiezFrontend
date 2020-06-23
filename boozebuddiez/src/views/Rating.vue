@@ -10,7 +10,7 @@
         <v-col cols="12" sm="3" md="6" style="height: auto;">
           <v-row >
             <h3 class="col-md-6 col-sm-3" style="text-align: left">My bar ratings</h3>
-            <div data-app class="col-md-6 col-sm-3 addbutton">
+            <div data-app class="col-md-6 col-xs-3 addbutton">
               <newbarratingmodel></newbarratingmodel>
             </div>
           </v-row>
@@ -26,7 +26,7 @@
         <v-col cols="12" sm="3" md="6" style="height: auto;">
           <div class="row">
             <h3 class="col-md-6 col-sm-3" style="text-align: left">My beer ratings</h3>
-            <div data-app class="col-md-6 col-sm-3 addbutton">
+            <div data-app class="col-md-6 col-xs-3 addbutton">
               <addnewbeerrating></addnewbeerrating>
             </div>
           </div>

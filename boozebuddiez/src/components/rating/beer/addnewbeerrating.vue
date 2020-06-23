@@ -15,11 +15,11 @@
         <v-card-title >
           <div class="row" v-if="this.selectedScreenData == 0">
             <span class="headline col 6">New Beer Rating</span>
-             <span class="col 6" @click="selectedScreen(1)"></span>
+             <button style="border: 1px solid black;" class="col 6" @click="selectedScreen(1)">Add a beer</button>
           </div>
           <div class="row" v-else >
             <span class="headline col 6" >Add a beer</span>
-             <span class="col 6" @click="selectedScreen(0)">Add new rating</span>
+             <button style="border: 1px solid black;" class="col 6" @click="selectedScreen(0)">Add new rating</button>
           </div>
         </v-card-title>
         <div v-if="this.selectedScreenData == 0">
