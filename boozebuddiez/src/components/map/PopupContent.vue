@@ -30,6 +30,11 @@
             v-model="starData"
             @rating-selected="this.addBarRating"
         ></StarRating>
+        <div class="row"> 
+              <div class="col 12">
+                <p @click="CheckInAtBar">Check in to this bar! </p>
+              </div>
+            </div>
          </div>
           <div v-else>
             <div>Edit your bar rating.</div>
