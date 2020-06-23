@@ -57,12 +57,19 @@ export default {
         this.$store.dispatch("SaveModelState", true)
       },
       sendToDB(){
-      axios.post("http://217.101.44.31:8083/api/public/user/getUserByUsername", {
-            username: this.user.name
+      axios.post("http://217.101.44.31:8082/api/public/friend/addRelationship/", {
+            friendUsername: this.user.name,
+            you:{
+                email: this.$store.getters.getUser.email,
+                id: this.$store.getters.getUser.id,
+                name: this.$store.getters.getUser.name,
+            },
             }).then(respone => {
                 if (respone.status == 200) {
-                  this.friend = respone.data;
-                  console.log(this.friend);
+                    axios.get('http://217.101.44.31:8082/api/public/friend/getFriendsByUserId/'+this.$store.getters.getUser.id)
+                    .then(response => (
+                    this.$store.dispatch("SaveFriends", response.data.relationships)
+        ))
             }
         });
       },

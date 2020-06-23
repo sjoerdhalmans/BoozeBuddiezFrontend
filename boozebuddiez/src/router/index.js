@@ -32,7 +32,7 @@ Vue.use(VueRouter)
     path: "/map",
     name: "map",
     component: Map,
-   // beforeEnter: authGuard
+    beforeEnter: authGuard
   },
   {
     path: "/rating",
