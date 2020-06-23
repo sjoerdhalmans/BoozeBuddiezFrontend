@@ -54,16 +54,33 @@ export default {
   components: {
     StarRating,
   },
+  computed:{
+
+  },
   mounted() {
     this.loadBars();
+          this.filterRatedOut();
     },
     methods: {
     loadBars() {
       this.Bars = this.$store.getters.getBarCollection;
-      this.$store.getters.getBarCollection.filter(bar =>
-        this.barnames.push(bar.name)
-      );
+
     },
+         filterRatedOut(){
+           console.log(this.$store.getters.getratingcollection.barRatings)
+        var editArray = [...this.$store.getters.getBarCollection]
+        this.$store.getters.getBarCollection.forEach(bar => {
+          this.$store.getters.getratingcollection.barRatings.forEach(rating =>{
+            if(bar.id === rating.barId)
+            {
+              console.log("delete")
+              var index = editArray.indexOf(bar)
+              editArray.splice(index, 1)
+            }
+          })
+        });
+        editArray.filter(bar => this.barnames.push(bar.name))
+      },
     save() {
       this.dialog = false;
       this.rating.id = this.Bars.filter(bar => bar.name == this.rating.name);
@@ -87,9 +104,17 @@ export default {
             var ratings = this.$store.getters.getratingcollection;
             ratings.barRatings.push(bar);
             this.$store.dispatch("SaveRatingCollection", ratings);
+            this.filterRatedOut();
+                        this.loadnewratings()
           }
         });
-    }
+    },
+          loadnewratings(){
+                        axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
+                .then(res => {
+                    this.$store.dispatch("SaveRatingCollection", res.data)
+                })
+          }
   }
 };
 </script>

@@ -49,6 +49,7 @@ computed:{
         return this.$store.getters.getBeerCollection
     },
     getBars(){
+
         return this.$store.getters.getBarCollection
     }
 }, 
@@ -57,6 +58,7 @@ mounted(){
 
     },
     methods:{
+
       loadbars(){
         this.$store.getters.getBarCollection.filter(bar => this.barnames.push(bar.name));
       },

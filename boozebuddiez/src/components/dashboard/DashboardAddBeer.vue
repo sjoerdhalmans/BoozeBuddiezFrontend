@@ -94,7 +94,8 @@ export default {
             editBeerDetails: null,
             newBeerDetails: null,
             newBeerPrice: null,
-            newEditPrice: null
+            newEditPrice: null,
+            barDetails: null
         }
     },
     watch: {
@@ -107,90 +108,40 @@ export default {
     },
 computed:{
     getBeers(){
-        this.filterhetleven(this.$store.getters.getDashboardBar.beers)
+        this.filterhetleven()
         return this.$store.getters.getDashboardBar.beers.filter(beer => this.ownBeers.push(beer.beer.name+" | "+beer.beer.brand))
     },
+    
 },
 methods:{
-    filterhetleven(beerInBar){
+    filterhetleven(){
      this.ownBeers = []
-    //     this.notOwnBeers = [...this.$store.getters.getBeerCollection]
-    //     //var newArray = this.notOwnBeers
-    //     for (let index = 0; index < this.notOwnBeers.length; index++) {
-    //         const element = this.notOwnBeers[index];
-    //         console.log(this.notOwnBeers.length)
-            
-            
-    //         beerInBar.forEach(e => {
-    //          if(element.id === e.beer.id){
-    //            //  console.log("removed "+ element.name + " And "+ e.beer.name )
-    //            var a = this.notOwnBeers.indexOf(element)
-    //             this.notOwnBeers.splice(a, 1)
-    //             return 
-    //         }
-    //         });            
-    //     }
-    //     console.log(this.notOwnBeers)
-    //     var newnewArray = []
-    //     //haal namen op
-    //    this.notOwnBeers.filter(beer => newnewArray.push(beer.name))
-    //     //zet in display
-    //    this.notOwnBeers = newnewArray
+
+
     var arrayList = [...this.$store.getters.getBeerCollection]
     var deleteArray = [...this.$store.getters.getBeerCollection]
-    for (let index = 0; index < arrayList.length; index++) {
-        const element = arrayList[index];
-        console.log(arrayList.length)
-        beerInBar.forEach(beerInTheBar => {
-            console.log(beerInTheBar)
-            if(element.id === beerInTheBar.beer.id){
-                var indexToDelete = deleteArray.indexOf(arrayList[index])
-                console.log("length: "+deleteArray.length)
-                console.log("index to delete: "+indexToDelete)
-               return deleteArray.splice(indexToDelete, 1)
 
-            } 
-        });
-        }
-                deleteArray.filter(beers => this.notOwnBeers.push(beers.name+" | "+beers.brand))
-                console.log(this.notOwnBeers)
-
-        beerInBar.forEach(beerInTheBar => {
+        this.$store.getters.getDashboardBar.beers.forEach(beerInTheBar => {
             for (let index = 0; index < arrayList.length; index++) {
                 const element = arrayList[index];
                 if(element.id === beerInTheBar.beer.id){
                 var indexToDelete = deleteArray.indexOf(arrayList[index])
-                console.log("length: "+deleteArray.length)
-                console.log("index to delete: "+indexToDelete)
                return deleteArray.splice(indexToDelete, 1)
 
-            } 
+                } 
             }
         })
-
-
-
-
-            
+        deleteArray.filter(beers => this.notOwnBeers.push(beers.name+" | "+beers.brand))
+         
     },
     LoadBeerAddDetails(){
-        try {
                     this.newBeerDetails = this.$store.getters.getBeerCollection.filter(beer => this.AddNewBeer === beer.name+" | "+beer.brand)[0]
-                console.log(this.newBeerDetails)
         this.$store.dispatch("SaveAddBeer",this.newBeerDetails)
-        } catch (error) {
-            console.log(error)
-        }
+
     },
-    LoadBeerEditDetails(){
-        try {             
+    LoadBeerEditDetails(){         
         this.editBeerDetails = this.$store.getters.getDashboardBar.beers.filter(beer => this.EditOwnedBeer === beer.beer.name+" | "+beer.beer.brand)[0]
         this.$store.dispatch("SaveEditBeer",this.editBeerDetails)
-        } catch (error) {
-            console.log(error)
-        }
-
-
     },
     editBarBeers(){
         var beersWithOutEdit = this.$store.getters.getDashboardBar.beers.filter(beer => beer.beer.id !== this.editBeerDetails.beer.id)
@@ -215,10 +166,10 @@ methods:{
                     duration: 2500,
                 });
                 this.loadAllBars()
+                this.reset()
+
             }
         })
-        this.reset()
-
         
     },
     AddBarBeers(){
@@ -236,27 +187,31 @@ methods:{
                     duration: 2500,
                 });
                 this.loadAllBars()
+
             }
         })
-        this.reset()
 
     },
     loadAllBars(){
         axios
       .get('http://217.101.44.31:8084/api/public/bar/getAllBars')
       .then(data => (
-        this.$store.dispatch("SaveBarCollection", data.data.bars)
+        this.$store.dispatch("SaveBarCollection", data.data.bars),
+        this.getDashboardInformation(),
+        this.reset(),
+        this.filterhetleven()
         ))
     },
+    getDashboardInformation(){
+        var barName = this.$store.getters.getDashboardBar.name
+          this.barDetails = this.$store.getters.getBarCollection.filter(bar => barName === bar.name)[0]
+          this.$store.dispatch("SaveBar",this.barDetails)
+    },
     reset(){
-            this.EditOwnedBeer = null,
-            this.AddNewBeer = null,
-            this.ownBeers = [],
-            this.notOwnBeers = [],
             this.editBeerDetails = null,
             this.newBeerDetails = null,
-            this.newBeerPrice = null,
-            this.newEditPrice = null
+            location.reload()
+
     }
 }
 

@@ -24,10 +24,25 @@ export default {
     methods: {
     loadBars() {
       this.Bars = this.$store.getters.getBarCollection;
-      this.$store.getters.getBarCollection.filter(bar =>
-        this.barnames.push(bar.name)
-      );
+      this.filterRatedOut()
     },
+         filterRatedOut(){
+           console.log(this.$store.getters.getratingcollection.barRatings)
+        var editArray = [...this.$store.getters.getBarCollection]
+        this.$store.getters.getBarCollection.forEach(bar => {
+          this.$store.getters.getratingcollection.barRatings.forEach(rating =>{
+            console.log(bar)
+            console.log(rating)
+            if(bar.id === rating.barId)
+            {
+              console.log("delete")
+              var index = editArray.indexOf(bar)
+              editArray.splice(index, 1)
+            }
+          })
+        });
+        editArray.filter(bar => this.barnames.push(bar.name))
+      },
     save() {
       this.dialog = false;
       this.rating.id = this.Bars.filter(bar => bar.name == this.rating.name);

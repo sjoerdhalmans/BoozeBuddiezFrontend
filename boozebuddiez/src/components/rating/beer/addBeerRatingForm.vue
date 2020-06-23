@@ -54,11 +54,25 @@ export default {
     methods:{
       loadBeers(){
         this.Beers = this.$store.getters.getBeerCollection;
-        this.$store.getters.getBeerCollection.filter(beer => this.beernames.push(beer.name));
+        this.filterRatedOut()
+      },
+      filterRatedOut(){
+        var editArray = [...this.$store.getters.getBeerCollection]
+        this.$store.getters.getBeerCollection.forEach(beer => {
+          this.$store.getters.getratingcollection.beerRatings.forEach(rating =>{
+            if(beer.id === rating.beerId)
+            {
+              console.log("delete")
+              var index = editArray.indexOf(beer)
+              editArray.splice(index, 1)
+            }
+          })
+        });
+        editArray.filter(beer => this.beernames.push(beer.name+" | "+beer.brand))
       },
       save(){
         this.$store.dispatch("SaveModelState", false)
-        this.rating.id = this.Beers.filter(beer => beer.name == this.rating.name)
+        this.rating.id = this.Beers.filter(beer => beer.name+" | "+beer.brand == this.rating.name)
         this.rating.id = this.rating.id[0].id
         this.sendtodb();
 
@@ -82,6 +96,7 @@ export default {
             var ratings = this.$store.getters.getratingcollection;
             ratings.beerRatings.push(beer);
             this.$store.dispatch("SaveRatingCollection", ratings);
+            this.filterRatedOut();
             this.loadnewratings()
             }
           });

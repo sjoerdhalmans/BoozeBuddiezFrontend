@@ -85,7 +85,7 @@ export default {
               barId: this.rating.id,
               rating: this.rating.rating
             };
-            var ratings = this.$store.getters.getratingcollection;
+                        var ratings = this.$store.getters.getratingcollection;
             ratings.barRatings.push(bar);
             this.$store.dispatch("SaveRatingCollection", ratings);
                        this.loadnewratings()
