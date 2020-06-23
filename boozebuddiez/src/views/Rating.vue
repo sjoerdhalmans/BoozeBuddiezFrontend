@@ -78,6 +78,7 @@ a
 .content {
   margin-top: 2%;
   word-wrap: break-word;
+  height: 600px;
 }
 
 .addbutton {
@@ -88,8 +89,6 @@ a
 .bar-rating-list {
   margin-top: 1%;
   height: 670px;
-  background-image: url("../assets/images/barlogo.png");
-  background-position: center;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -97,19 +96,52 @@ a
 .beer-rating-list {
   margin-top: 1%;
   height: 670px;
-  background-image: url("../assets/images/boozebuddieslogo.png");
-  background-position: center;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
-.bar-rating-list::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+.beer-rating-list::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-image: url("../assets/images/boozebuddieslogo.png");
+  background-size: cover;
+  background-position: top center;
+  height: 170px;
+  width: 260px;
+  opacity: 0.25;
+  margin-top: 45%;
+  margin-left: 30%;
 }
 
-.beer-rating-list::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+.bar-rating-list::before {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-image: url("../assets/images/barlogo.png");
+  background-size: cover;
+  background-position: center;
+  max-height: 300px;
+  max-width: 300px;
+  opacity: 0.25;
+  margin-top: 35%;
+}
+
+.bar-rating-list::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
+}
+
+.beer-rating-list::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 </style>
