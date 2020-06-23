@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12">My Timeline</div>
     </div>
-    <div v-for="activity in this.activities.reverse()" :key="activity.id">
+    <div v-for="activity in this.activities" :key="activity.id">
         <timelineCard v-bind:activity="activity"/>
     </div>
 </div>
@@ -18,7 +18,7 @@ export default {
     },
     computed:{
         activities(){
-            return this.$store.getters.getTimeline
+            return this.$store.getters.getTimeline.slice().reverse()
         }
     },
     mounted(){
