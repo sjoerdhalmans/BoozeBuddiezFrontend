@@ -1,5 +1,5 @@
 <template>
-  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 container sideBar ">
+  <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 container sideBar">
       <div  class="row" id="mainContent"> 
           <div class="col-12" v-if="this.chosenSideBar == 0">
               <MapSideBar/>
@@ -60,11 +60,26 @@ export default {
     background-color: #F9E3B4;    
     border-radius: 20px;
     box-shadow: 2px 2px;
-    background-image: url('../../assets/images/boozebuddieslogo.png');
-    background-position: center;
     margin-bottom: 10px;
     min-height: 500px;
+    position: relative;
 }
+
+.sideBar::before{
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-image: url('../../assets/images/boozebuddieslogo.png');
+    background-size: cover;
+    background-position: top center;
+    opacity: 0.25;
+    max-height: 50%;
+    margin-top: 35%;
+}
+
 .button{
     background-color: white;
     height: 50px;
