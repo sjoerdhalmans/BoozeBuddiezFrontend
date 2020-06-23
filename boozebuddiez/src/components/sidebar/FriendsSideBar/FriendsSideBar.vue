@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="friends">
         <div class="row">
             <div class="col-12 friends">My Friends</div>
         </div>
@@ -52,11 +52,13 @@ export default {
 .friends {
   overflow-x: hidden;
   overflow-y: auto;
+  max-height: 570px;
 }
 
-.friends::-webkit-scrollbar { /* WebKit */
-    width: 0;
-    height: 0;
+.friends::-webkit-scrollbar {
+  /* WebKit */
+  width: 0;
+  height: 0;
 }
 
 </style>
