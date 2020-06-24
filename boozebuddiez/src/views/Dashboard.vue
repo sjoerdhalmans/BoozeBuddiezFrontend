@@ -3,17 +3,17 @@
     <div id="nav">
       <Navigation />
     </div>
-    <v-row>
+      <v-container>
+        <v-row>
         <h1>Bar Dashboard</h1>
     </v-row>
-    <v-row>
         <v-col>
         <DashboardDetails></DashboardDetails>
         </v-col>
         <v-col>
         <DashboardAddBeer></DashboardAddBeer>
         </v-col>
-    </v-row>
+      </v-container>
   </div>
 </template>
 
