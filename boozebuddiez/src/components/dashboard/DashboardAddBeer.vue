@@ -235,6 +235,7 @@ export default {
 <style>
 .v-autocomplete__content.v-menu__content {
     top: 100px !important;
+    left: 10px !important;
     box-shadow: 0 4px 6px 0 rgba(32, 33, 36, 0.28);
 }
 </style>
