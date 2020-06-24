@@ -1,5 +1,5 @@
 <template>
-  <div class="content row" style="background-color: blanchedalmond;" v-if="this.popupState == 0">
+  <div class="contentPopUp row" style="background-color: blanchedalmond;" v-if="this.popupState == 0">
     <div class="col-6">
        <div class="row">
          <div  class="col-6" 
@@ -217,16 +217,16 @@ export default Vue.extend({
 </script>
 
 <style >
-  .content{
+  .contentPopUp{
     width: 40vw;
-    height: 40vh;
+    height: 37vh;
   }
     .bardetails{
     margin: 10px 0px;
   }
   .mapboxgl-popup-content{
     width: 40vw !important;
-    height: 40vh !important;
+    height: 37vh !important;
     background: blanchedalmond !important;
   }
 </style>

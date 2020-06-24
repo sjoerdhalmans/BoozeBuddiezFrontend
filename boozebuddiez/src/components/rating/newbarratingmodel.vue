@@ -54,9 +54,7 @@ export default {
   components: {
     StarRating,
   },
-  computed:{
 
-  },
   mounted() {
     this.loadBars();
           this.filterRatedOut();
@@ -82,10 +80,10 @@ export default {
         editArray.filter(bar => this.barnames.push(bar.name))
       },
     save() {
-      this.dialog = false;
       this.rating.id = this.Bars.filter(bar => bar.name == this.rating.name);
       this.rating.id = this.rating.id[0].id;
       this.sendtodb();
+      this.dialog = false;
     },
     sendtodb() {
       axios.post("http://217.101.44.31:8086/api/public/bar/rateBar", {

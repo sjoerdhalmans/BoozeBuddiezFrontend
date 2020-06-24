@@ -39,21 +39,21 @@ export default {
             rating: this.modelData,
             beerId: this.fullBeer[0].id,
             userId: this.$store.getters.getUser.id,
-            id: this.rating.id
+            id: this.$store.getters.getratingcollection.beerRatings.filter(rating => rating.beerId === this.fullBeer[0].id)[0].id
 
             }).then(respone => {
                 if (respone.status == 200) {
-            var beer = {
-              userId: this.$store.getters.getUser.id,
-              beerId: this.fullBeer[0].id,
-              rating: this.modelData,
-              id: this.rating.id
-            };
+            var rating = respone.data
+                }
+            
             var ratings = this.$store.getters.getratingcollection;
-            var deleteBeer = ratings.beerRatings.filter(filterId => filterId.id != beer.id)
-            deleteBeer.push(beer)
+            var deleteBeer = ratings.beerRatings.filter(filterId => filterId.beerId === rating.beerId)
+            var index = ratings.beerRatings.indexOf(deleteBeer)
+            console.log(deleteBeer)
+            ratings.beerRatings[index] = rating
+            //deleteBeer.push(beer)
 
-            ratings.beerRatings = deleteBeer
+            //ratings.beerRatings = deleteBeer
 
             this.$store.dispatch("SaveRatingCollection", ratings);
 
@@ -63,9 +63,16 @@ export default {
                     position: "bottom-right",
                     duration: 2500,
                 });
-            }
+            this.loadnewratings()
           });
         },
+            loadnewratings(){
+      axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
+           .then(res => {
+                this.$store.dispatch("SaveRatingCollection", res.data)
+               console.log(res.data)
+                })
+      }
     },
        components: {
     StarRating
