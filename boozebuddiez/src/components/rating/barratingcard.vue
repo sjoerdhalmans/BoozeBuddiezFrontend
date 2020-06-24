@@ -34,28 +34,24 @@ export default {
            this.modelData = this.rating.rating
         },
          editBar(){
-        axios.put("http://217.101.44.31:8086/api/public/bar/EditBarRating", {
+             axios.put("http://217.101.44.31:8086/api/public/bar/EditBarRating", {
             rating: this.modelData,
             barId: this.fullBar[0].id,
             userId: this.$store.getters.getUser.id,
-            id: this.rating.id
-
+            id: this.$store.getters.getratingcollection.barRatings.filter(rating => rating.barId === this.fullBar[0].id)[0].id
             }).then(respone => {
                 if (respone.status == 200) {
-            var bar = {
-              userId: this.$store.getters.getUser.id,
-              barId: this.fullBar[0].id,
-              rating: this.modelData,
-              id: this.rating.id
-            };
-            console.log(bar)
+            var rating = respone.data
+            }
             var ratings = this.$store.getters.getratingcollection;
 
-            var deleteBar = ratings.barRatings.filter(filterId => filterId.barId != bar.id)
-            console.log(deleteBar)
-            deleteBar.push(bar)
+            var deleteBar = ratings.barRatings.filter(filterId => filterId.barId === rating.barId)
+            var index = ratings.barRatings.indexOf(deleteBar)
+            ratings.barRatings[index] = rating
+            //console.log(deleteBar)
+            //deleteBar.push(rating)
 
-            ratings.barRatings = deleteBar
+            //ratings.barRatings = deleteBar
             this.$store.dispatch("SaveRatingCollection", ratings);
 
                 this.$toasted.show("Bar rating changed succesfully!", {
@@ -64,9 +60,16 @@ export default {
                     position: "bottom-right",
                     duration: 2500,
                 });
-            }
           });
+          this.loadnewratings()
         },
+            loadnewratings(){
+      axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
+           .then(res => {
+                this.$store.dispatch("SaveRatingCollection", res.data)
+               console.log(res.data)
+                })
+      }
     },
        components: {
     StarRating

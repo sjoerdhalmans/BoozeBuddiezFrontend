@@ -96,7 +96,6 @@ export default {
             var ratings = this.$store.getters.getratingcollection;
             ratings.beerRatings.push(beer);
             this.$store.dispatch("SaveRatingCollection", ratings);
-            this.filterRatedOut();
             this.loadnewratings()
             }
           });
@@ -105,6 +104,7 @@ export default {
                         axios.get('http://217.101.44.31:8086/api/public/bar/getAllUserRatings/' + this.$store.getters.getUser.id)
                 .then(res => {
                     this.$store.dispatch("SaveRatingCollection", res.data)
+                              this.loadBeers()    
                 })
       }
     },
